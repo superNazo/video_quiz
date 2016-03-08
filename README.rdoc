@@ -1,5 +1,7 @@
 == README
 
+{<img src="https://coveralls.io/repos/github/superNazo/video_quiz/badge.svg?branch=coverall" alt="Coverage Status" />}[https://coveralls.io/github/superNazo/video_quiz?branch=coverall]
+
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
