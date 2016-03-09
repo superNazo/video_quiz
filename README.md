@@ -4,6 +4,11 @@
 ## Frequent abbreviations.
 * PR - pull request.
 
+## how to name branches.
+git checkout -b feature/<description>
+git commit file1 file2 file3
+git push origin fetaute/<description>
+
 ## How to get done with pull requests quick and painless? 
 
 ###Before push check the next points in your commits:
