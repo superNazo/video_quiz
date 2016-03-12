@@ -1,5 +1,8 @@
 source 'https://rubygems.org'
 
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 gem 'coveralls', require: false
 gem 'rails',        '4.2.2'
 gem 'sass-rails',   '5.0.2'
