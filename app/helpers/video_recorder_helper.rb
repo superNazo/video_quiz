@@ -1,0 +1,2 @@
+module VideoRecorderHelper
+end
