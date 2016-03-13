@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users, controllers: { sessions: "users/sessions" }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
   # You can have the root of your site routed with "root"
-  root 'application#hello'
+  root 'home#index'
   
-  get '/auth/:provider/callback', to: 'sessions#create'
+  # get '/auth/:provider/callback', to: 'sessions#create'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
