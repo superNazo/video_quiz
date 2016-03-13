@@ -27,7 +27,7 @@
       <div class="row">
         <div class="col-xs-6 col-xs-offset-3">
           <div class="wall-of-videos-container">
-            <p>...</p>
+            <ziggeo ziggeo-limit=15 ziggeo-width=320 ziggeo-height=240></ziggeo>
           </div>
         </div>
       </div>
@@ -38,3 +38,9 @@
   </div>
 </div>
 </div>
+
+<script>
+ZiggeoApi.Events.on("submitted", function (data) {
+  alert("The video with token " + data.video.token + " has been submitted!");
+});
+</script>
