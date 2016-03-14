@@ -5,6 +5,17 @@
     <%= f.input :title %>
   </div>
 
+  <h3>Questions</h3>
+
+  <div id="questions">
+    <%= f.simple_fields_for :questions do |q| %>
+      <%= render 'question_fields', f: q %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add question', f, :questions %>
+    </div>
+  </div>
+
   <div class="form-actions">
     <%= f.button :submit %>
   </div>
