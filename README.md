@@ -6,9 +6,18 @@
 * PR - pull request.
 
 ## how to name branches.
-git checkout -b feature/<description>
+
+feature/\<description\> - for new stuff, usually you address a 'task' in jira. 
+
+bugfix/\<description\> - bugfixes, usually you address a 'bug' in jira. 
+
+## Simple git flow.
+
+git checkout -b feature/\<description\>
+
 git commit file1 file2 file3
-git push origin fetaute/<description>
+
+git push origin fetaute/\<description\>
 
 ## How to get done with pull requests quick and painless? 
 
