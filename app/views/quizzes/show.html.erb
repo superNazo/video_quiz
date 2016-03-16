@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<div>
+  <strong>Title:</strong>
+  <%= @quiz.title %>
+  <% @quiz.questions.each do |q| %>
+    <p><%= q.content %></p>
+  <% end %>
+</div>
+
+<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
+<%= link_to 'Back', quizzes_path %>
