@@ -15,6 +15,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new
   def new
     @quiz = Quiz.new
+    3.times { @quiz.questions.build }
   end
 
   # GET /quizzes/1/edit
@@ -69,6 +70,6 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:name)
+      params.require(:quiz).permit(:name, questions_attributes: [:id, :content])
     end
 end

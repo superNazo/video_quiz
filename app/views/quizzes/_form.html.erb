@@ -15,6 +15,16 @@
     <%= f.label :name %><br>
     <%= f.text_field :name %>
   </div>
+
+  <h4>Questions</h4>
+
+  <%= f.fields_for :questions do |question| %>
+    <div class="field">
+      <%= question.label :content %> <br>
+      <%= question.text_field :content %>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= f.submit %>
   </div>
