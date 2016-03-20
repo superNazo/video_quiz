@@ -5,4 +5,10 @@ class Quiz < ActiveRecord::Base
                                 reject_if: proc { |attrs| attrs['content'].blank? }
   validates :name,
             presence: true
+
+  def self.build_new
+    quiz = Quiz.new
+    3.times { quiz.questions.build }
+    quiz
+  end
 end
