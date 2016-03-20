@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @quiz.name %>
+</p>
+
+<% if @quiz.questions.any? %>
+  <ol>
+    <% @quiz.questions.each do |question| %>
+      <li><%= question.content %></li>
+    <% end %>
+  </ol>
+<% else %>
+<p>There is no any questions in this quiz yet</p>
+<% end %>
+
+<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
+<%= link_to 'Back', quizzes_path %>
