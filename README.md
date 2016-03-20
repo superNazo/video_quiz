@@ -1,5 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/superNazo/video_quiz/badge.svg?branch=master)](https://coveralls.io/github/superNazo/video_quiz?branch=master)
-[ ![Codeship Status for superNazo/video_quiz](https://codeship.com/projects/5c5eef50-c777-0133-7cf7-6e2d04338f84/status?branch=master)](https://codeship.com/projects/139036)
+[![Coverage Status](https://coveralls.io/repos/github/superNazo/video_quiz/badge.svg?branch=master&)](https://coveralls.io/github/superNazo/video_quiz?branch=master) [![Codeship Status for superNazo/video_quiz](https://codeship.com/projects/5c5eef50-c777-0133-7cf7-6e2d04338f84/status?branch=master)](https://codeship.com/projects/139036)
 ==============
 
 ## Frequent abbreviations.
