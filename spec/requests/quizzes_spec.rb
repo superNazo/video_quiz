@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "Quizzes", type: :request do
+  
   describe "GET /quizzes" do
     it "works! (now write some real specs)" do
       user = User.create!(email: "user@example.org", name: "Name")

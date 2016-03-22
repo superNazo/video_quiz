@@ -17,6 +17,7 @@ gem 'turbolinks',     '2.3.0'
 gem 'uglifier',       '2.5.3'
 gem 'will_paginate', '~> 3.0.6'
 gem 'Ziggeo'
+gem 'cocoon'
 
 group :development, :test do
   gem 'byebug',      '3.4.0'

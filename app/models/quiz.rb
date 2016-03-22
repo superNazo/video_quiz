@@ -2,9 +2,12 @@ class Quiz < ActiveRecord::Base
   has_many :questions, dependent: :destroy
 
   accepts_nested_attributes_for :questions,
-                                reject_if: proc { |attrs| attrs['content'].blank? }
+                                reject_if: proc { |attrs| attrs['content'].blank? },
+                                allow_destroy: true
   validates :name,
-            presence: true
+            presence: true,
+            uniqueness: true,
+            length: { maximum: 40 }
 
   def self.build_new
     quiz = Quiz.new

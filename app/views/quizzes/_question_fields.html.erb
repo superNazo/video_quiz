@@ -1,0 +1,7 @@
+<li class="question">
+  <div class="nested-fields">
+    <%= f.label :content, class: "input-group-addon" %>
+    <%= f.text_area :content, class: "form-control", rows: "3" %>
+    <%= link_to_remove_association('remove', f, { wrapper_class: 'question'}) %>
+  </div>
+</li>

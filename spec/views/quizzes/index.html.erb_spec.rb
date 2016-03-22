@@ -8,7 +8,7 @@ RSpec.describe "quizzes/index", type: :view do
         :name => "Name"
       ),
       Quiz.create!(
-        :name => "Name"
+        :name => "Name2"
       )
     ])
   end
