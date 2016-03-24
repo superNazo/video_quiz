@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>VideoQuiz</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-    <link rel="stylesheet" href="//assets-cdn.ziggeo.com/v1-stable/ziggeo.css"/>
-    <script src="//assets-cdn.ziggeo.com/v1-stable/ziggeo.js"></script>
-    <script>
-      ZiggeoApi.token = "<%= Rails.application.secrets.ziggeo_api_token %>";
-    </script>
-    <%= csrf_meta_tags %>
-  </head>
+<head>
+  <title>VideoQuiz</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
   <body>
     <%= yield %>
   </body>
