@@ -1,6 +1,6 @@
 Devise.setup do |config|
-  config.omniauth :facebook, Rails.application.secrets.facebook_app_id, Rails.application.secrets.facebook_app_secret,
-                  callback_url: 'http://localhost:3000/users/auth/facebook/callback'
+  config.omniauth :facebook, Rails.application.secrets.facebook_app_id,
+                             Rails.application.secrets.facebook_app_secret
   require 'devise/orm/active_record'
   config.strip_whitespace_keys = [:email]
   config.skip_session_storage = [:http_auth]
