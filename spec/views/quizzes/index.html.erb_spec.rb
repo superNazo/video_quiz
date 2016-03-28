@@ -2,6 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "quizzes/index", type: :view do
   before(:each) do
+    view.stub(:will_paginate)
     assign(:quizzes, [
       Quiz.create!(
         :name => "Name"
