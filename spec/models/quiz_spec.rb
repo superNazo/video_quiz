@@ -6,7 +6,7 @@ RSpec.describe Quiz, type: :model do
   it { should respond_to(:name) }
 
   it { should_not be_valid }
-  
+
   it 'is valid with a name' do
     @quiz.should be_valid
   end

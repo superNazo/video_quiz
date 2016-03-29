@@ -5,10 +5,10 @@ RSpec.describe "quizzes/index", type: :view do
     view.stub(:will_paginate)
     assign(:quizzes, [
       Quiz.create!(
-        :name => "Name"
+        name: "Name"
       ),
       Quiz.create!(
-        :name => "Name2"
+        name: "Name2"
       )
     ])
   end
