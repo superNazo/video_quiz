@@ -1,4 +1,5 @@
-[![Coverage Status](https://coveralls.io/repos/github/superNazo/video_quiz/badge.svg?branch=master&)](https://coveralls.io/github/superNazo/video_quiz?branch=master) [![Codeship Status for superNazo/video_quiz](https://codeship.com/projects/5c5eef50-c777-0133-7cf7-6e2d04338f84/status?branch=master)](https://codeship.com/projects/139036) [![Codacy Badge](https://api.codacy.com/project/badge/grade/f08ec20eb42d40efb140b96d62811fa1)](https://www.codacy.com/app/sch-icq/video_quiz) 
+[![Coverage Status](https://coveralls.io/repos/github/superNazo/video_quiz/badge.svg?branch=master&)](https://coveralls.io/github/superNazo/video_quiz?branch=master) [![Codeship Status for superNazo/video_quiz](https://codeship.com/projects/5c5eef50-c777-0133-7cf7-6e2d04338f84/status?branch=master)](https://codeship.com/projects/139036) [![Codacy Badge](https://api.codacy.com/project/badge/grade/f08ec20eb42d40efb140b96d62811fa1)](https://www.codacy.com/app/vovka/video_quiz) 
+
 ==============
 
 ## Frequent abbreviations.
