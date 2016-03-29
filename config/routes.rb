@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
   resources :quizzes
   get "home/index"
   devise_for :users, skip: [:password, :sessions],

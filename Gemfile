@@ -17,7 +17,7 @@ gem 'will_paginate', '~> 3.0.6'
 
 group :development, :test do
   gem 'byebug',      '3.4.0'
-  gem 'jasmine-rails'
+  gem 'jasmine'
   gem 'rspec-rails', '3.4.0'
   gem 'spring',      '1.1.3'
   gem 'sqlite3',     '1.3.9'
