@@ -13,6 +13,7 @@ gem 'sass-rails',     '>= 3.2'
 gem 'sdoc',           '0.4.0', group: :doc
 gem 'turbolinks',     '2.3.0'
 gem 'uglifier',       '2.5.3'
+gem 'will_paginate', '~> 3.0.6'
 
 group :development, :test do
   gem 'byebug',      '3.4.0'
