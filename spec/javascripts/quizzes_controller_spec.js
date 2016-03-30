@@ -6,14 +6,14 @@ describe("checkToHideOrShowLink", function() {
     expect(questionFields).toEqual(3);
   });
 
-  it("removes 'add question' btn when fields count is 10", function() {
+  it("removes add question btn when fields count is 10", function() {
     var addQuestionBtn = $("#add_question");
-    ready;
+    ready();
 
     for (var i = 0; i < 7; i++) {
-      addQuestionButton.click();
+      addQuestionBtn.click();
     }
 
-    expect(addQuestionBtn).is(':visible')).toBe(false);
+    expect(addQuestionBtn).is(':visible').toBe(false);
   });
 });
