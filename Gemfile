@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby "2.3.0"
 
 gem 'angularjs-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
