@@ -1,5 +1,9 @@
 [Link to JIRA ticket](https://ssu-jira.softserveinc.com/browse/LR-)
 
+### Author.
+
+- [ ] I have added link to this PR to the JIRA
+
 ### Reviewers.
 
 - [ ] @reviewer1
