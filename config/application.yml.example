@@ -1,7 +1,11 @@
-development:
+defaults: &defaults
   SECRET_KEY_BASE:
   FACEBOOK_APP_ID:
   FACEBOOK_APP_SECRET:
   ZIGGEO_API_TOKEN:
   ZIGGEO_PRIVATE_KEY:
   ZIGGEO_ENCRYPTION_KEY:
+
+development: *defaults
+
+test: *defaults
