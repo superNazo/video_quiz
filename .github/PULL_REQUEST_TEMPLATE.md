@@ -3,6 +3,7 @@
 ### Author.
 
 - [ ] I have added link to this PR to the JIRA
+- [ ] I have logged time in JIRA.
 
 ### Reviewers.
 
