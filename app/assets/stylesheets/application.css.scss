@@ -1,3 +1,57 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "video_recorder";
+
+// Main
+body {
+  margin-top: 100px;
+}
+
+.link-to {
+  text-decoration: none;
+  color: black;
+}
+
+.btn {
+  width: 100px;
+}
+.right {
+  float: right;
+}
+
+.left {
+  float: left;
+}
+
+// login
+.jumbotron-login {
+  color: white;
+  background-color: #999;
+  text-align: center;
+}
+
+// All quizzes
+ul.list-group {
+  .col-xs-7{
+    text-align: left;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  .col-xs-5 {
+    text-align: right;
+  }
+}
+
+.pagination {
+  margin: auto;
+}
+
+// _form
+.margin {
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+
+.sizing-addon-md {
+  font-size: 18px;
+}

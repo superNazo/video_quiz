@@ -1,5 +1,6 @@
 <%= form_for(@quiz) do |f| %>
   <% if @quiz.errors.any? %>
+  <div class="alert alert-danger" role="alert">
     <div id="error_explanation">
       <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
 
@@ -9,23 +10,22 @@
       <% end %>
       </ul>
     </div>
+  </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br>
-    <%= f.text_field :name %>
+  <div class="input-group">
+      <%= f.label :name, class: "input-group-addon sizing-addon-md" %>
+      <%= f.text_field :name, class: "form-control" %>
   </div>
 
-  <h4>Questions</h4>
+  <h2>Now add some Questions</h2>
 
   <%= f.fields_for :questions do |question| %>
-    <div class="field">
-      <%= question.label :content %> <br>
-      <%= question.text_field :content %>
+    <div class="input-group margin">
+      <%= question.label :content, class: "input-group-addon" %>
+      <%= question.text_area :content, class: "form-control", rows: "3" %>
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  <%= f.submit class: "link-to btn btn-success right"%>
 <% end %>
