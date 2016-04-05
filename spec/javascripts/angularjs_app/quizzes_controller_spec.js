@@ -51,3 +51,22 @@ describe("Bind Cocoon events to link", function(){
     expect(object.toggleLink).toHaveBeenCalled();
   });
 });
+
+describe('newQuizCtrl', function() {
+  beforeEach(module('quizzesControllers'));
+  beforeEach(inject(function(_$controller_){
+    $controller = _$controller_;
+  }));
+
+  describe('$scope.add', function() {
+    it('Add new input to the form', function() {
+      var $scope = {};
+      $controller('newQuizCtrl', {$scope: $scope});
+
+      $scope.add();
+
+      expect($scope.quiz.questions_attributes.length).toEqual(2);
+    });
+  });
+});
+

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 ruby "2.3.0"
 
 gem 'angularjs-rails'
+gem 'angular-rails-templates'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'coffee-rails',   '4.1.0'
 gem 'coveralls', require: false
