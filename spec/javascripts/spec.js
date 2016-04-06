@@ -1,3 +1,2 @@
 //= require jquery
-// =require quizzes_controller
-//= require_tree .
+//= require quizzes_controller
