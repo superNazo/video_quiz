@@ -15,6 +15,6 @@ RSpec.describe "quizzes/index", type: :view do
 
   it "renders a list of quizzes" do
     render
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
+    assert_select "div>span", :text => "Name".to_s, :count => 2
   end
 end
