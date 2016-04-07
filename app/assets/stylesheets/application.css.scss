@@ -2,14 +2,20 @@
 @import "bootstrap";
 @import "video_recorder";
 
+// Variables
+$plain-white: #ffffff;
+$plain-black: #000000;
+$dark-gray:   #999999;
+
+
 // Main
 body {
   margin-top: 100px;
 }
 
 .link-to {
+  color: $plain-black;
   text-decoration: none;
-  color: black;
 }
 
 .btn {
@@ -30,17 +36,17 @@ body {
 
 // login
 .jumbotron-login {
-  color: white;
-  background-color: #999;
+  background-color: $dark-gray;
+  color: $plain-white;
   text-align: center;
 }
 
 // All quizzes
-ul.list-group {
-  .col-xs-7{
-    text-align: left;
+.list-group {
+  .col-xs-7 {
     font-size: 20px;
     font-weight: bold;
+    text-align: left;
   }
   .col-xs-5 {
     text-align: right;
@@ -53,8 +59,8 @@ ul.list-group {
 
 // _form
 .margin {
-  margin-top: 18px;
   margin-bottom: 18px;
+  margin-top: 18px;
 }
 
 .sizing-addon-md {
