@@ -1,19 +1,28 @@
-<p id="notice"><%= notice %></p>
+<div class="alert alert-success" role="alert">
+  <p id="notice"><%= notice %></p>
+</div>
 
-<p>
-  <strong>Name:</strong>
+<h2>
+  <strong>Quiz name:</strong>
   <%= @quiz.name %>
-</p>
+</h2>
 
 <% if @quiz.questions.any? %>
-  <ol>
+  <h4>Listing questions: </h4>
     <% @quiz.questions.each do |question| %>
-      <li><%= question.content %></li>
+    <ul class="list-group">
+      <li class="list-group-item">
+      <%= question.content %>
+      </li>
+    </ul>
     <% end %>
-  </ol>
 <% else %>
-<p>There is no any questions in this quiz yet</p>
+<div class="alert alert-danger" role="alert">
+  <p>There is no any questions in this quiz yet</p>
+</div>
 <% end %>
 
-<%= link_to 'Edit', edit_quiz_path(@quiz) %> |
-<%= link_to 'Back', quizzes_path %>
+<div class="left">
+  <%= link_to 'Edit', edit_quiz_path(@quiz), class: "link-to btn btn-success" %>
+  <%= link_to 'Back', quizzes_path, class: "link-to btn btn-danger"%>
+</div>
