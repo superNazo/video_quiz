@@ -5,7 +5,7 @@ var QuestionField = function(questions, fields, addFieldlink) {
 };
 
 QuestionField.prototype.toggleLink = function() {
-  if (this.fieldsList().length >= 4) {
+  if (this.fieldsList().length >= 10) {
     this.addFieldlink.hide();
   } else {
     this.addFieldlink.show();
