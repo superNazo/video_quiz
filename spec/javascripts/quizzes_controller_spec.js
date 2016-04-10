@@ -1,46 +1,53 @@
-describe("checkToHideOrShowLink", function() {
-
-  // it("contains 3 questions on page load", function() {
-  //   ready();
-  //   var questionFields = $("#questions .question .nested-fields");
-  //   expect(questionFields.length).toEqual(3);
-  // });
-
-  // it("removes add question btn when fields count is 10", function() {
-  //   var addQuestionBtn = $("#add_question");
-  //   ready();
-
-  //   for (var i = 0; i < 7; i++) {
-  //     addQuestionBtn.click();
-  //   }
-
-  //   expect(addQuestionBtn).is(':visible').toBe(false);
-  // });
+describe("Toggle Link", function() {
 
   it("prevents adding question when 10th question added", function(){
-    object = new QuestionField;
-    var newQuestion = { hide: function(){} },
-        questions = { length: 10 };
-    spyOn(newQuestion, 'hide');
+    var newQuestionField = {
+      hide: function(){},
+      show: function(){}
+    };
 
-    object.hideOrShowBtn(questions, newQuestion);
-    expect(newQuestion.hide).toHaveBeenCalled();
+    var fieldsCount = function() {
+      return {
+        length: 10
+      };
+    };
+
+    var questions = null;
+
+    object = new QuestionField(questions, fieldsCount, newQuestionField);
+    spyOn(newQuestionField, "hide");
+
+    object.toggleLink();
+    expect(newQuestionField.hide).toHaveBeenCalled();
   });
 });
 
-describe('bindEvents', function(){
+describe("Bind Cocoon events to link", function(){
   it("adds one question when insert event fires", function(){
-    object = new QuestionField;
-    var newQuestion = { bindEvent: function(){} };
-    spyOn(newQuestion, 'bindEvent');
-    expect(object.getBtn).toHandleWith('cocoon:after-insert', object.bindEvent());
+    var addQuestionLink = $("<div></div>"),
+        fieldsCount = null,
+        questions = null;
+
+    var object = new QuestionField(addQuestionLink, fieldsCount, questions);
+
+    spyOn(object, "toggleLink");
+    object.bindCocoonEvents();
+
+    addQuestionLink.trigger("cocoon:after-insert");
+    expect(object.toggleLink).toHaveBeenCalled();
   });
 
-  it("takes away one question when remove event fires", function(){
-    object = new QuestionField;
-    var questionBtn = { bindEvent: function(){} };
+  it("deletes one question when remove event fires", function(){
+    var addQuestionLink = $("<div></div>"),
+        fieldsCount = null,
+        questions = null;
 
-    spyOn(questionBtn, 'bindEvent');
-    expect(questionBtn.bindEvent).toHaveBeenCalled();
+    var object = new QuestionField(addQuestionLink, fieldsCount, questions);
+
+    spyOn(object, "toggleLink");
+    object.bindCocoonEvents();
+
+    addQuestionLink.trigger("cocoon:after-remove");
+    expect(object.toggleLink).toHaveBeenCalled();
   });
 });
