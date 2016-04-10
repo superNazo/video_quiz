@@ -14,7 +14,7 @@ describe("Toggle Link", function() {
 
     var questions = null;
 
-    object = new QuestionField(questions, fieldsCount, newQuestionField);
+    var object = new QuestionField(questions, fieldsCount, newQuestionField);
     spyOn(newQuestionField, "hide");
 
     object.toggleLink();
