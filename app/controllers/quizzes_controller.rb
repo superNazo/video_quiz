@@ -5,6 +5,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes
   def index
     @quizzes = Quiz.all.paginate(page: params[:page], per_page: 10)
+    @completed_quizzes = Interview.started_by(current_user)
   end
 
   # GET /quizzes/1

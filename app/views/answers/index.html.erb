@@ -1,0 +1,29 @@
+<div class="row alert alert-success">
+  <p><%= notice %></p>
+</div>
+
+<div class="row">
+  <div class="col-xs-1"><h2><%= link_to '<= BACK', quizzes_path, class: 'btn btn-primary' %></h2></div>
+  <div class="col-xs-11"><h2>Listing Answers</h2></div>
+</div>
+
+<div class="row col-xs-12">
+  <% @answers.each do |answer| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-xs-7">
+            <p><%= link_to "Interview id: #{answer.interview.id}, Video token: #{answer.video_token}", quiz_answer_path(@quiz, answer) %></p>
+          </div>
+          <div class="col-xs-5 text-right">
+            <p>
+              <%= link_to 'Edit', edit_quiz_answer_path(@quiz, answer), class: "btn btn-primary" %>
+              <%= link_to 'Destroy', quiz_answer_path(@quiz, answer), method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+</div>
+<%= link_to 'New Answer', new_quiz_answer_path(@quiz), class: 'btn btn-success' %>

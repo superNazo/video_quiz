@@ -1,27 +1,50 @@
-<div class="alert alert-success" role="alert">
-  <p id="notice"><%= notice %></p>
+<div class="row alert alert-success">
+  <p><%= notice %></p>
 </div>
 
-<h1>Quizzes list</h1>
+<div class="row">
+  <div class="col-xs-1"><h2><%= link_to 'New Quiz', new_quiz_path, class: "btn btn-primary left" %></h2></div>
+  <div class="col-xs-11"><h2>Quizzes list:</h2></div>
+</div>
 
-<% @quizzes.each do |quiz| %>
+<div class="row col-xs-12">
+  <% @quizzes.each do |quiz| %>
+    <ul class="list-group">
+      <li class="list-group-item">
+        <div class="row">
+          <div class="col-xs-2">
+            <p><span><%= interview_status_of(quiz) %></span></p>
+          </div>
+          <div class="col-xs-5">
+            <p><%= link_to quiz.name, edit_quiz_path(quiz), class: "" %></p>
+          </div>
+          <div class="col-xs-5 text-right">
+            <p>
+              <% if interview_status_of(quiz) != 'Completed' %>
+                <%= link_to 'Start interview', new_quiz_answer_path(quiz), class: "btn btn-success" %>
+              <% end %>
+              <%= link_to 'Edit', edit_quiz_path(quiz), class: "btn btn-primary" %>
+              <%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
+            </p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  <% end %>
+</div>
+
+<div class="row">
+  <div class="col-xs-11 col-xs-offset-1"><h2>Assigned quizzes:</h2></div>
+</div>
+
+<div class="row col-xs-12">
   <ul class="list-group">
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-7">
-          <span>
-            <%= quiz.name %>
-          </span>
-        </div>
-        <div class="col-xs-5">
-          <%= link_to 'Show', quiz, class: "link-to btn btn-success" %>
-          <%= link_to 'Edit', edit_quiz_path(quiz), class: "link-to btn btn-info" %>
-          <%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }, class: "link-to btn btn-danger" %>
-        </div>
-      </div>
-    </li>
+    <% @completed_quizzes.each do |interview| %>
+      <li class="list-group-item">
+        <%= link_to interview.quiz.name, quiz_answers_path(interview.quiz), class: "" %>
+      </li>
+    <% end %>
   </ul>
-<% end %>
+</div>
 
-<span class="pagination right"><%= will_paginate @quizzes , inner_window: 1, outer_window: 0 %></span>
-<%= link_to 'New Quiz', new_quiz_path, class: "link-to btn btn-success left" %>
+<span class="pagination text-right"><%= will_paginate @quizzes , inner_window: 1, outer_window: 0 %></span>

@@ -24,12 +24,18 @@ RSpec.describe QuizzesController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Quiz. As you add validations to Quiz, be sure to
   # adjust the attributes here as well.
+
+  before(:each) do
+    @user = User.create!(email: "user@example.org", name: "Name")
+    sign_in @user
+  end
+
   let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
+    { name: 'Quiz #1' }
   }
 
   let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
+    { name: '' }
   }
 
   # This should return the minimal set of values that should be in the session
@@ -40,24 +46,18 @@ RSpec.describe QuizzesController, type: :controller do
   describe "GET #index" do
     it "assigns all quizzes as @quizzes" do
       quiz = Quiz.create! valid_attributes
-
       get :index, {}, valid_session
-
       expect(assigns(:quizzes)).to eq([quiz])
     end
 
     it "redirect to home page if not sign in" do
+      sign_out @user
       get :index, {}, valid_session
-
       expect(response.status).to eq 302
     end
 
     it "if user sign in show quizzes" do
-      user = User.create!(email: "user@example.org", name: "Name")
-      sign_in user
-
       get :index, {}, valid_session
-
       expect(response.status).to eq 200
     end
   end
@@ -72,11 +72,7 @@ RSpec.describe QuizzesController, type: :controller do
 
   describe "GET #new" do
     it "assigns a new quiz as @quiz" do
-      user = User.create!(email: "user@example.org", name: "Name")
-      sign_in user
-
       get :new
-
       expect(assigns(:quiz)).to be_a_new(Quiz)
     end
   end
@@ -125,14 +121,13 @@ RSpec.describe QuizzesController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        { name: 'Updated Quiz #1' }
       }
 
       it "updates the requested quiz" do
         quiz = Quiz.create! valid_attributes
         put :update, {:id => quiz.to_param, :quiz => new_attributes}, valid_session
         quiz.reload
-        skip("Add assertions for updated state")
       end
 
       it "assigns the requested quiz as @quiz" do

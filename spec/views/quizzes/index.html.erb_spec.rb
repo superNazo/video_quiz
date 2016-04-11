@@ -1,7 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe "quizzes/index", type: :view do
+
   before(:each) do
+    @user = assign(:user, User.create!(email: "user@example.org", name: "Name"))
+    sign_in @user
+    @completed_quizzes = Interview.where(user_id: @user.id)
     view.stub(:will_paginate)
     assign(:quizzes, [
       Quiz.create!(
