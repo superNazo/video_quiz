@@ -20,12 +20,18 @@
 
   <h2>Now add some Questions</h2>
 
-  <%= f.fields_for :questions do |question| %>
-    <div class="input-group margin">
-      <%= question.label :content, class: "input-group-addon" %>
-      <%= question.text_area :content, class: "form-control", rows: "3" %>
-    </div>
-  <% end %>
+  <div class="field">
+    <ol id="questions">
+      <div class="input-group margin">
+        <%= f.fields_for :questions do |questions| %>
+          <%= render 'question_fields', f: questions %>
+        <% end %>
+        <li id="add_question"><%= link_to_add_association 'add question', f, :questions %></li>
+      </div>
+    </ol>
+  </div>
 
-  <%= f.submit class: "link-to btn btn-success right"%>
+  <div class="actions">
+    <%= f.submit class: "link-to btn btn-success right"%>
+  </div>
 <% end %>

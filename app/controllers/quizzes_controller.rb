@@ -3,7 +3,6 @@ class QuizzesController < ApplicationController
   before_action :authenticate_user!
 
   # GET /quizzes
-  # GET /quizzes.json
   def index
     @quizzes = Quiz.all.paginate(page: params[:page], per_page: 10)
   end
@@ -70,6 +69,6 @@ class QuizzesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def quiz_params
-      params.require(:quiz).permit(:name, questions_attributes: [:id, :content])
+      params.require(:quiz).permit(:name, questions_attributes: [:id, :content, :_destroy])
     end
 end

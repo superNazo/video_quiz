@@ -1,6 +1,5 @@
 class Question < ActiveRecord::Base
   belongs_to :quiz
 
-  validates :content,
-            presence: true
+  validates :content, length: { maximum: 150 }
 end
