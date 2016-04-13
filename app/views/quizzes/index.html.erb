@@ -22,6 +22,7 @@
     </li>
   </ul>
 <% end %>
-
 <span class="pagination right"><%= will_paginate @quizzes , inner_window: 1, outer_window: 0 %></span>
 <%= link_to 'New Quiz', new_quiz_path, class: "link-to btn btn-success left" %>
+<br><br><a href="#/new_quiz">New Quiz with Angular</a>
+<div ng-view></div>
