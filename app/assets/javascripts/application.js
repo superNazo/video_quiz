@@ -16,6 +16,7 @@
 //= require bootstrap-sprockets
 //= require angular
 //= require angular-route
+//= require angular-resource
 //= require angular-mocks
 //= require angular-rails-templates
 //= require cocoon
