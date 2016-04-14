@@ -70,3 +70,33 @@ describe('newQuizCtrl', function() {
   });
 });
 
+  describe("indexQuizCtrl", function(){
+  beforeEach(module("videoQuiz"));
+
+  beforeEach(inject(function(_$controller_){
+    $controller = _$controller_;
+  }));
+
+  describe("$scope.sort", function(){
+    it("should change the sorting key", function(){
+      var $scope = {};
+      $controller("indexQuizCtrl", { $scope: $scope });
+
+      $scope.sort("name");
+      expect($scope.sortKey).toEqual("name");
+    });
+
+    it("should change the order of sorting quizzes to reverse", function(){
+      var $scope = {};
+      $controller("indexQuizCtrl", { $scope: $scope });
+
+      var reverseState = true;
+
+      $scope.sort();
+
+      expect($scope.reverse).toEqual(reverseState);
+    });
+  });
+});
+
+

@@ -5,4 +5,4 @@ var videoQuiz = angular.module('videoQuiz', [
   'videoQuizRoutes',
   'quizzesControllers',
   'videoQuizServices'
-  ]);
+]);
