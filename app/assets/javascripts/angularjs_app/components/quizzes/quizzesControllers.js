@@ -17,3 +17,13 @@ quizzesControllers.controller('newQuizCtrl', ['$scope', '$http', '$window',
     });
   };
   }]);
+
+quizzesControllers.controller('indexQuizCtrl', ['$scope', 'Quizzes',  function($scope, Quizzes) {
+
+    $scope.quizzes = Quizzes.query();
+
+    $scope.sort = function(keyname) {
+        $scope.sortKey = keyname;
+        $scope.reverse = !$scope.reverse;
+    }
+}]);
