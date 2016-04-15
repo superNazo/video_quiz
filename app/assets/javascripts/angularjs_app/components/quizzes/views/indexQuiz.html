@@ -21,6 +21,7 @@
   <li ng-repeat="quiz in quizzes | orderBy:sortKey:reverse | filter:search" class="list-group-item">
     <div class="row">
       <div class="col-xs-7">
+        <a href="quizzes#/{{quiz.id}}/start" class="link-to btn btn-success">Start quiz</a>
         <span>{{quiz.name}}</span>
       </div>
       <div class="col-xs-5">
@@ -31,4 +32,4 @@
     </div>
   </li>
 </ul>
-<a href="quizzes#/new_quiz" class="link-to btn btn-success right">New quiz</a>
+<a href="quizzes#/new" class="link-to btn btn-success right">New quiz</a>

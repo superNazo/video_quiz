@@ -50,7 +50,7 @@ quizzesControllers.controller('indexQuizCtrl',
 quizzesControllers.controller('editQuizCtrl',
   ['$scope', '$routeParams', '$location', 'Quiz',
   function($scope, $routeParams, $location, Quiz) {
-    $scope.quiz = Quiz.show({id: $routeParams.quizId});
+    $scope.quiz = Quiz.show({id: $routeParams.quiz_id});
 
     $scope.add = function(){
       $scope.quiz.questions.push({
@@ -60,7 +60,7 @@ quizzesControllers.controller('editQuizCtrl',
 
     $scope.editQuiz = function() {
       Quiz.update({
-        id: $routeParams.quizId,
+        id: $routeParams.quiz_id,
         quiz: {
           name: $scope.quiz.name,
           questions_attributes: $scope.quiz.questions
@@ -71,3 +71,9 @@ quizzesControllers.controller('editQuizCtrl',
     };
   }]
 );
+
+quizzesControllers.controller('startQuizCtrl', ['$scope', '$routeParams', 'Quiz',
+  function($scope, $routeParams, Quiz) {
+    $scope.quiz = Quiz.get({id: $routeParams.quiz_id});
+  }
+]);
