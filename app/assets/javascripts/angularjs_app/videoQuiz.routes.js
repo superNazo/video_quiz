@@ -17,7 +17,11 @@ videoQuizRoutes.config(['$routeProvider',
     }).
     otherwise({
       redirectTo: '/'
-    });
+    })
+    .when('/:quizId/show_quiz', {
+      templateUrl: 'angularjs_app/components/quizzes/views/showQuiz.html',
+      controller: 'showQuizCtrl'
+    })
   }
 ]);
 

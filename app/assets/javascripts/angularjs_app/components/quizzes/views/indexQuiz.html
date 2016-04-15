@@ -1,20 +1,47 @@
-<h1> Quizzes list </h1>
-<form class="form-inline">
-  <div class="form-group">
-    <label>Search</label>
-    <input type="text" ng-model="search" class="form-control" placeholder="Search">
-  </div>
-</form>
-<div class="sort-wrap">
-  <h3>Sort by:</h3>
-  <div class="btn btn-primary" ng-click="sort('id')">Id
-    <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-  </div>
-  <div class="btn btn-primary" ng-click="sort('name')">Name
-    <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
-  </div>
-  <div class="btn btn-primary" ng-click="sort('created_at')">Date
-    <span class="glyphicon sort-icon" ng-show="sortKey=='created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+<div class="container-fluid">
+  <div class="container">
+    <div class="jumbotron">
+      <!-- <div class="alert alert-success" role="alert">
+        <p id="notice"><%= notice %></p>
+      </div> -->
+      <h1> Quizzes list </h1>
+      <form class="form-inline">
+        <div class="form-group">
+          <label>Search</label>
+          <input type="text" ng-model="search" class="form-control" placeholder="Search">
+        </div>
+      </form>
+      <div class="sort-wrap">
+        <h3>Sort by:</h3>
+        <div class="btn btn-primary" ng-click="sort('id')">Id
+          <span class="glyphicon sort-icon" ng-show="sortKey=='id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </div>
+        <div class="btn btn-primary" ng-click="sort('name')">Name
+          <span class="glyphicon sort-icon" ng-show="sortKey=='name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </div>
+        <div class="btn btn-primary" ng-click="sort('created_at')">Date
+          <span class="glyphicon sort-icon" ng-show="sortKey=='created_at'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+        </div>
+      </div>
+      <ul class="list-group">
+        <li ng-repeat="quiz in quizzes | orderBy:sortKey:reverse | filter:search " class="list-group-item">
+          <div class="row">
+            <div class="col-xs-7">
+              <!-- <span>{{quizz.id}}</span> -->
+              <span>{{quiz.name}}</span>
+              <!-- <span>{{quizz.created_at}}</span> -->
+            </div>
+            <div class="col-xs-5">
+              <a href="quizzes#/{{quiz.id}}/show_quiz" class="link-to btn btn-success">Show</a>
+              <a href="#" class="link-to btn btn-info">Edit</a>
+              <a href="#" class="link-to btn btn-danger">Delete</a>
+            </div>
+          </div>
+        </li>
+      </ul>
+      <a href="quizzes#/new_quiz" class="link-to btn btn-success right" >New quiz</a>
+      <dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"></dir-pagination-controls>
+    </div>
   </div>
 </div>
 <ul class="list-group">
