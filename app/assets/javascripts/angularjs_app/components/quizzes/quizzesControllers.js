@@ -43,6 +43,7 @@ quizzesControllers.controller('indexQuizCtrl',
   }
 ]);
 
+
 quizzesControllers.controller('editQuizCtrl',
   ['$scope', '$routeParams', '$location', 'Quiz',
   function($scope, $routeParams, $location, Quiz) {
@@ -73,3 +74,28 @@ quizzesControllers.controller('showQuizCtrl', [
 
   $scope.quiz = Quiz.show({id: $routeParams.quizId});
 }]);
+
+quizzesControllers.controller('editQuizCtrl',
+  ['$scope', '$routeParams', '$location', 'Quiz',
+  function($scope, $routeParams, $location, Quiz) {
+    $scope.quiz = Quiz.show({id: $routeParams.quizId});
+
+    $scope.add = function(){
+      $scope.quiz.questions.push({
+        content: ''
+      });
+    };
+
+    $scope.editQuiz = function() {
+      Quiz.update({
+        id: $routeParams.quizId,
+        quiz: {
+          name: $scope.quiz.name,
+          questions_attributes: $scope.quiz.questions
+        }
+      }, function() {
+        $location.path('/quizzes');
+      });
+    };
+  }]
+);
