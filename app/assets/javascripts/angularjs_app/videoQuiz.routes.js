@@ -11,13 +11,20 @@ videoQuizRoutes.config(['$routeProvider',
       templateUrl: 'angularjs_app/components/quizzes/views/newQuiz.html',
       controller: 'newQuizCtrl'
     }).
+    when('/:quizId/edit_quiz', {
+      templateUrl: 'angularjs_app/components/quizzes/views/editQuiz.html',
+      controller: 'editQuizCtrl'
+    }).
+    when('/:quizId/show_quiz', {
+      templateUrl: 'angularjs_app/components/quizzes/views/showQuiz.html',
+      controller: 'showQuizCtrl'
+    }).
     otherwise({
       redirectTo: '/'
     });
   }
 ]);
 
-videoQuiz.config(["$httpProvider", function($httpProvider) {
-  $httpProvider.defaults.headers
-          .common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
+videoQuiz.config(['$httpProvider', function($httpProvider) {
+  $httpProvider.defaults.headers.common['X-CSRF-Token'] = $('meta[name=csrf-token]').attr('content');
 }]);

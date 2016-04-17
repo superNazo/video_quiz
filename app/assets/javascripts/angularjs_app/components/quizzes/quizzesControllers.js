@@ -28,6 +28,7 @@ quizzesControllers.controller('indexQuizCtrl',
     $scope.quizzes = Quizzes.query();
 
     $scope.sort = function(keyname) {
+
       $scope.sortKey = keyname;
       $scope.reverse = !$scope.reverse;
     };
@@ -42,3 +43,66 @@ quizzesControllers.controller('indexQuizCtrl',
     };
   }
 ]);
+
+
+quizzesControllers.controller('editQuizCtrl',
+  ['$scope', '$routeParams', '$location', 'Quiz',
+  function($scope, $routeParams, $location, Quiz) {
+    $scope.quiz = Quiz.show({id: $routeParams.quizId});
+
+    $scope.add = function(){
+      $scope.quiz.questions.push({
+        content: ''
+      });
+    };
+
+    $scope.editQuiz = function() {
+      Quiz.update({
+        id: $routeParams.quizId,
+        quiz: {
+          name: $scope.quiz.name,
+          questions_attributes: $scope.quiz.questions
+        }
+      }, function() {
+        $location.path('/quizzes');
+      });
+    };
+  }]
+);
+
+quizzesControllers.controller('showQuizCtrl', [
+  '$scope', 'Quiz', '$routeParams', function($scope, Quiz, $routeParams) {
+
+  $scope.quiz = Quiz.show({id: $routeParams.quizId});
+}]);
+
+quizzesControllers.controller('editQuizCtrl',
+  ['$scope', '$routeParams', '$location', 'Quiz',
+  function($scope, $routeParams, $location, Quiz) {
+    $scope.quiz = Quiz.show({id: $routeParams.quizId});
+
+    $scope.add = function(){
+      $scope.quiz.questions.push({
+        content: ''
+      });
+    };
+
+    $scope.editQuiz = function() {
+      Quiz.update({
+        id: $routeParams.quizId,
+        quiz: {
+          name: $scope.quiz.name,
+          questions_attributes: $scope.quiz.questions
+        }
+      }, function() {
+        $location.path('/quizzes');
+      });
+    };
+  }]
+);
+
+quizzesControllers.controller('showQuizCtrl', [
+  '$scope', 'Quiz', '$routeParams', function($scope, Quiz, $routeParams) {
+
+  $scope.quiz = Quiz.show({id: $routeParams.quizId});
+}]);
