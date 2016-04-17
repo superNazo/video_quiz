@@ -67,3 +67,9 @@ quizzesControllers.controller('editQuizCtrl',
     };
   }]
 );
+
+quizzesControllers.controller('showQuizCtrl', [
+  '$scope', 'Quiz', '$routeParams', function($scope, Quiz, $routeParams) {
+
+  $scope.quiz = Quiz.show({id: $routeParams.quizId});
+}]);
