@@ -4,7 +4,8 @@ var videoQuiz = angular.module('videoQuiz', [
   'ngResource',
   'videoQuizRoutes',
   'quizzesControllers',
-  'videoQuizServices'
+  'videoQuizServices',
+  'angularUtils.directives.dirPagination'
 ]);
 
 $(document).on('ready page:load', function(arguments) {
