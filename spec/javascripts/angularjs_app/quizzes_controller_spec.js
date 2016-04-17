@@ -52,16 +52,16 @@ describe("Bind Cocoon events to link", function(){
   });
 });
 
-describe('newQuizCtrl', function() {
-  beforeEach(module('quizzesControllers'));
+describe("newQuizCtrl", function() {
+  beforeEach(module("quizzesControllers"));
   beforeEach(inject(function(_$controller_){
     $controller = _$controller_;
   }));
 
-  describe('$scope.add', function() {
-    it('Add new input to the form', function() {
+  describe("$scope.add", function() {
+    it("Add new input to the form", function() {
       var $scope = {};
-      $controller('newQuizCtrl', {$scope: $scope});
+      $controller("newQuizCtrl", {$scope: $scope});
 
       $scope.add();
 
@@ -70,8 +70,9 @@ describe('newQuizCtrl', function() {
   });
 });
 
-  describe("indexQuizCtrl", function(){
+describe("indexQuizCtrl", function(){
   beforeEach(module("videoQuiz"));
+  var $controller;
 
   beforeEach(inject(function(_$controller_){
     $controller = _$controller_;
@@ -80,7 +81,7 @@ describe('newQuizCtrl', function() {
   describe("$scope.sort", function(){
     it("should change the sorting key", function(){
       var $scope = {};
-      $controller("indexQuizCtrl", { $scope: $scope });
+      $controller("indexQuizCtrl", {$scope: $scope});
 
       $scope.sort("name");
       expect($scope.sortKey).toEqual("name");
@@ -88,7 +89,7 @@ describe('newQuizCtrl', function() {
 
     it("should change the order of sorting quizzes to reverse", function(){
       var $scope = {};
-      $controller("indexQuizCtrl", { $scope: $scope });
+      $controller("indexQuizCtrl", {$scope: $scope});
 
       var reverseState = true;
 
@@ -98,5 +99,3 @@ describe('newQuizCtrl', function() {
     });
   });
 });
-
-
