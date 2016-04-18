@@ -21,7 +21,12 @@ videoQuizRoutes.config(['$routeProvider',
     }).
     when('/:quiz_id/finish', {
       templateUrl: 'angularjs_app/components/quizzes/views/finishQuiz.html'
-    }).
+    })
+    .when('/pure_objects', {
+      templateUrl: 'angularjs_app/components/pure_objects/views/index.html',
+      controller: PureObjectsCtrl
+    })
+    .
     otherwise({
       redirectTo: '/'
     });
