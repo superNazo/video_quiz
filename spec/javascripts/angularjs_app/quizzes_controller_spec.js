@@ -131,3 +131,96 @@ describe('editQuizCtrl', function() {
     });
   });
 });
+describe("Testing Routes", function(){
+  var $route, $rootScope, $location, $httpBackend;
+
+  beforeEach(function(){
+    module("videoQuiz");
+
+    inject(function($injector){
+      $route = $injector.get("$route");
+      $rootScope = $injector.get("$rootScope");
+      $location = $injector.get("$location");
+      $httpBackend = $injector.get("$httpBackend");
+
+      $httpBackend.when
+        ("GET", "angularjs_app/components/quizzes/views/indexQuiz.html").respond("/");
+      $httpBackend.when
+        ("GET", "angularjs_app/components/quizzes/views/showQuiz.html").respond("/:quizId/show_quiz");
+      $httpBackend.when
+        ("GET", "angularjs_app/components/quizzes/views/newQuiz.html").respond("/new_quiz");
+    });
+  });
+
+  it("should navigate to all quizzes list", function() {
+    $rootScope.$apply(function() {
+      $location.path("/");
+    });
+    expect($location.path()).toBe("/");
+    expect($route.current.templateUrl).toBe
+      ("angularjs_app/components/quizzes/views/indexQuiz.html");
+    expect($route.current.controller).toBe("indexQuizCtrl");
+  });
+
+  it("should navigate to selected quiz", function(){
+    $rootScope.$apply(function() {
+      $location.path("/:quizId/show_quiz");
+    });
+    expect($location.path()).toBe("/:quizId/show_quiz");
+    expect($route.current.templateUrl).toBe
+      ("angularjs_app/components/quizzes/views/showQuiz.html");
+    expect($route.current.controller).toBe("showQuizCtrl");
+  });
+
+  it("should navigate to new quiz", function(){
+    $rootScope.$apply(function() {
+      $location.path("/new_quiz");
+    });
+    expect($location.path()).toBe("/new_quiz");
+    expect($route.current.templateUrl).toBe
+      ("angularjs_app/components/quizzes/views/newQuiz.html");
+    expect($route.current.controller).toBe("newQuizCtrl");
+  });
+
+  it("should redirect not registered urls to index", function(){
+    $rootScope.$apply(function() {
+      $location.path("/other");
+    });
+    expect($location.path()).toBe("/");
+    expect($route.current.templateUrl).toBe
+      ("angularjs_app/components/quizzes/views/indexQuiz.html");
+    expect($route.current.controller).toBe("indexQuizCtrl");
+  });
+});
+
+describe('editQuizCtrl', function() {
+  var $controller, $scope, $routeParams, Quiz;
+
+  $scope = {};
+  $routeParams = {};
+  Quiz = {
+    show: function() {},
+    update: function() {}
+  };
+
+  beforeEach(module('quizzesControllers'));
+  beforeEach(inject(function(_$controller_){
+    $controller = _$controller_;
+
+    $controller('editQuizCtrl', {
+      $scope: $scope,
+      $routeParams: $routeParams,
+      Quiz: Quiz
+    });
+
+    $scope.quiz = {};
+  }));
+
+  describe('$scope.editQuiz', function() {
+    it('Update new input to the form', function() {
+      spyOn(Quiz, 'update');
+      $scope.editQuiz();
+      expect(Quiz.update).toHaveBeenCalled();
+    });
+  });
+});

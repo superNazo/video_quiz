@@ -1,0 +1,24 @@
+<h1>
+  <strong>Quiz name:</strong>
+</h1>
+
+<ul class="list-group">
+  <h1 class="list-group-item">
+    {{quiz.name}}
+  </h1>
+</ul>
+
+<div class="" ng-show="quiz.questions !== undefined">
+  <h1>Listing questions :</h1>
+  <p class="list-group-item list-group-item-warning" ng-show="(quiz.questions).length === 0">
+    No questions here.
+  </p>
+  <ul class="list-group">
+      <h2 class="list-group-item" ng-repeat="question in quiz.questions">{{question.content}}</h2>
+  </ul>
+</div>
+
+<div class="left">
+  <a href="quizzes#/" class="link-to btn btn-danger">Back</a>
+  <a href="quizzes#/{{quiz.id}}/edit_quiz" class="link-to btn btn-info">Edit</a>
+</div>
