@@ -99,3 +99,35 @@ describe("indexQuizCtrl", function(){
     });
   });
 });
+
+describe('editQuizCtrl', function() {
+  var $controller, $scope, $routeParams, Quiz;
+
+  $scope = {};
+  $routeParams = {};
+  Quiz = {
+    show: function() {},
+    update: function() {}
+  };
+
+  beforeEach(module('quizzesControllers'));
+  beforeEach(inject(function(_$controller_){
+    $controller = _$controller_;
+
+    $controller('editQuizCtrl', {
+      $scope: $scope,
+      $routeParams: $routeParams,
+      Quiz: Quiz
+    });
+
+    $scope.quiz = {};
+  }));
+
+  describe('$scope.editQuiz', function() {
+    it('Update new input to the form', function() {
+      spyOn(Quiz, 'update');
+      $scope.editQuiz();
+      expect(Quiz.update).toHaveBeenCalled();
+    });
+  });
+});

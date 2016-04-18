@@ -15,3 +15,12 @@ videoQuizServices.factory('Quiz', ['$resource',
     });
   }
 ]);
+
+videoQuizServices.factory('Quiz', ['$resource',
+  function($resource){
+    return $resource('quizzes/:id.json', {}, {
+      show: {method: 'GET', params: {id: '@id'}},
+      update: {method:'PUT', params: {id: '@id'}}
+    });
+  }
+]);
