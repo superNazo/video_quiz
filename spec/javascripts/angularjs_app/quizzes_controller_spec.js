@@ -52,50 +52,47 @@ describe("Bind Cocoon events to link", function(){
   });
 });
 
-describe("newQuizCtrl", function() {
-  beforeEach(module("quizzesControllers"));
-  beforeEach(inject(function(_$controller_){
-    $controller = _$controller_;
-  }));
-
-  describe("$scope.add", function() {
-    it("Add new input to the form", function() {
-      var $scope = {};
-      $controller("newQuizCtrl", {$scope: $scope});
-
-      $scope.add();
-
-      expect($scope.quiz.questions_attributes.length).toEqual(2);
-    });
-  });
-});
-
-describe("indexQuizCtrl", function(){
+describe("Controllers tests", function() {
   beforeEach(module("videoQuiz"));
-  var $controller;
-
   beforeEach(inject(function(_$controller_){
     $controller = _$controller_;
   }));
 
-  describe("$scope.sort", function(){
-    it("should change the sorting key", function(){
-      var $scope = {};
-      $controller("indexQuizCtrl", {$scope: $scope});
+  describe("indexQuizCtrl", function(){
 
-      $scope.sort("name");
-      expect($scope.sortKey).toEqual("name");
+    describe("$scope.sort", function(){
+      it("should change the sorting key", function(){
+        var $scope = {};
+        $controller("indexQuizCtrl", {$scope: $scope});
+
+        $scope.sort("name");
+
+        expect($scope.sortKey).toEqual("name");
+      });
+
+      it("should change the order of sorting quizzes to reverse", function(){
+        var $scope = {};
+        $controller("indexQuizCtrl", {$scope: $scope});
+        $scope.reverse = false;
+
+        $scope.sort();
+
+        expect($scope.reverse).toBe(true);
+      });
     });
 
-    it("should change the order of sorting quizzes to reverse", function(){
-      var $scope = {};
-      $controller("indexQuizCtrl", {$scope: $scope});
+  });
 
-      var reverseState = true;
+  describe("newQuizCtrl", function() {
+    describe("$scope.add", function() {
+      it("Add new input to the form", function() {
+        var $scope = {};
+        $controller("newQuizCtrl", {$scope: $scope});
 
-      $scope.sort();
+        $scope.add();
 
-      expect($scope.reverse).toEqual(reverseState);
+        expect($scope.quiz.questions_attributes.length).toEqual(2);
+      });
     });
   });
 });
