@@ -1,4 +1,4 @@
-describe("videoQuizRoutes", function() {
+describe('videoQuizRoutes', function() {
   var route;
 
   beforeEach(function() {
@@ -12,7 +12,7 @@ describe("videoQuizRoutes", function() {
     expect(route.routes[null].redirectTo).toEqual('/quizzes');
   });
 
-  describe('/:quizId/start route', function() {
+  describe('/quizzes/:quizId/start route', function() {
     it('should be defined', function() {
       var startQuizRoute = route.routes['/quizzes/:quizId/start'];
       expect(startQuizRoute).toBeDefined();
@@ -30,7 +30,7 @@ describe("videoQuizRoutes", function() {
     });
   });
 
-  describe('/:quizId/finish route', function() {
+  describe('/quizzes/:quizId/finish route', function() {
     it('should be defined', function() {
       var finishQuizRoute = route.routes['/quizzes/:quizId/finish'];
       expect(finishQuizRoute).toBeDefined();

@@ -14,6 +14,11 @@ quizzesControllers.controller('newQuizCtrl', ['$scope', '$http', '$location', 'Q
       pushEmptyQuestionTo($scope.quiz.questions_attributes);
     };
 
+    $scope.removeQuestion = function(question) {
+      var questionIndex = $scope.quiz.questions_attributes.indexOf(question);
+      $scope.quiz.questions_attributes.splice(questionIndex, 1);
+    };
+
     $scope.createQuiz = function(){
       Quizzes.save({quiz: $scope.quiz});
       $location.path('/quizzes');
@@ -54,6 +59,10 @@ quizzesControllers.controller('editQuizCtrl',
 
     $scope.addQuestion = function(){
       pushEmptyQuestionTo($scope.quiz.questions_attributes);
+    };
+
+    $scope.removeQuestion = function(question) {
+      question._destroy = true;
     };
 
     $scope.editQuiz = function() {

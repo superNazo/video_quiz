@@ -3,7 +3,7 @@
   <input type="text" class="form-control" ng-model="quiz.name" required></input>
 </div>
 <h3>Questions</h3>
-<div class="form-group" ng-repeat="question in quiz.questions_attributes">
+<div class="form-group" ng-repeat="question in quiz.questions_attributes" ng-hide="question._destroy">
   <label> {{$index+1}} Content
     <br>
     <textarea type="text" ng-model="question.content" required maxlength="1023"></textarea>
@@ -12,6 +12,7 @@
     <br>
     <input type="text" ng-model="question.record_time_limit" required pattern="[0-9]+" title="You can enter only numbers">
   </label>
+  <a href="" ng-click="removeQuestion(question)">Remove question</a>
 </div>
 <div class="form-group ">
   <button class="btn btn-default" ng-click="addQuestion()">Add question</button>
