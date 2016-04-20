@@ -87,20 +87,20 @@ describe("Controllers tests", function() {
       it('delete quiz from quizzes list', function() {
         var $scope = {};
         $controller('indexQuizCtrl', {$scope: $scope, Quiz: Quiz});
-      
+
         spyOn(Quiz, 'delete');
         $scope.confirm = function(msg) { return true; };
 
         $scope.deleteQuiz();
- 
+
         expect(Quiz.delete).toHaveBeenCalled();
       });
 
       it('cancel delete quiz from quizzes list', function() {
         var $scope = {};
         $controller('indexQuizCtrl', {$scope: $scope, Quiz: Quiz});
-      
-        spyOn(Quiz, 'delete');  
+
+        spyOn(Quiz, 'delete');
         $scope.confirm = function(msg) { return false; };
 
         $scope.deleteQuiz();
@@ -116,7 +116,7 @@ describe("Controllers tests", function() {
         var $scope = {};
         $controller("newQuizCtrl", {$scope: $scope});
 
-        $scope.add();
+        $scope.addQuestion();
 
         expect($scope.quiz.questions_attributes.length).toEqual(2);
       });

@@ -1,0 +1,18 @@
+<div class="input-group">
+  <label class="input-group-addon sizing-addon-md">Name</label>
+  <input type="text" class="form-control" ng-model="quiz.name"></input>
+</div>
+<h3>Questions</h3>
+<div class="form-group" ng-repeat="question in quiz.questions_attributes">
+  <label> {{$index+1}} Content
+    <br>
+    <textarea type="text" ng-model="question.content"></textarea>
+  </label>
+  <label>Record time limit
+    <br>
+    <textarea type="text" ng-model="question.record_time_limit"></textarea>
+  </label>
+</div>
+<div class="form-group ">
+  <button class="btn btn-default" ng-click="addQuestion()">Add question</button>
+</div>
