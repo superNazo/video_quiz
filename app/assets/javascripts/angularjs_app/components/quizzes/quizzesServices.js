@@ -8,9 +8,9 @@ videoQuizServices.factory('Quizzes', ['$resource',
 
 videoQuizServices.factory('Quiz', ['$resource',
   function($resource){
-    return $resource('quizzes/:id.json', {}, {
-      show: {method: 'GET', params: {id: '@id'}},
-      update: {method:'PUT', params: {id: '@id'}}
+    return $resource('quizzes/:quizId.json', {}, {
+      show: {method: 'GET', params: {quizId: '@quizId'}},
+      update: {method:'PUT', params: {quizId: '@quizId'}}
     });
   }
 ]);
