@@ -56,11 +56,13 @@ describe("Controllers tests", function() {
   beforeEach(module("videoQuiz"));
   beforeEach(inject(function(_$controller_){
     $controller = _$controller_;
+      Quiz = {
+      delete: function() {},
+      };
   }));
 
   describe("indexQuizCtrl", function(){
-
-    describe("$scope.sort", function(){
+      describe("$scope.sort", function(){
       it("should change the sorting key", function(){
         var $scope = {};
         $controller("indexQuizCtrl", {$scope: $scope});
@@ -81,6 +83,31 @@ describe("Controllers tests", function() {
       });
     });
 
+      describe('$scope.deleteQuiz', function() {
+      it('delete quiz from quizzes list', function() {
+        var $scope = {};
+        $controller('indexQuizCtrl', {$scope: $scope, Quiz: Quiz});
+      
+        spyOn(Quiz, 'delete');
+        $scope.confirm = function(msg) { return true; };
+
+        $scope.deleteQuiz();
+ 
+        expect(Quiz.delete).toHaveBeenCalled();
+      });
+
+      it('cancel delete quiz from quizzes list', function() {
+        var $scope = {};
+        $controller('indexQuizCtrl', {$scope: $scope, Quiz: Quiz});
+      
+        spyOn(Quiz, 'delete');  
+        $scope.confirm = function(msg) { return false; };
+
+        $scope.deleteQuiz();
+
+        expect(Quiz.delete).not.toHaveBeenCalled();
+      });
+    });
   });
 
   describe("newQuizCtrl", function() {

@@ -32,8 +32,12 @@ quizzesControllers.controller('indexQuizCtrl',
       $scope.reverse = !$scope.reverse;
     };
 
+    $scope.confirm = function(msg) {
+      return confirm(msg);
+    };
+
     $scope.deleteQuiz = function (quizId) {
-      if (confirm('Are you sure you want to delete this quiz?')){
+      if ($scope.confirm('Are you sure you want to delete this quiz?')){
         Quiz.delete({id: quizId}, function(){
           $scope.quizzes = Quizzes.query();
           $location.path('/');
