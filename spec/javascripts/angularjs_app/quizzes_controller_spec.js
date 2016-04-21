@@ -98,10 +98,9 @@ describe("Controllers tests", function() {
 });
 
 describe('editQuizCtrl', function() {
-  var $controller, $scope, $routeParams, Quiz;
+  var $controller, $scope, Quiz;
 
   $scope = {};
-  $routeParams = {};
   Quiz = {
     show: function() {},
     update: function() {}
@@ -109,11 +108,9 @@ describe('editQuizCtrl', function() {
 
   beforeEach(module('quizzesControllers'));
   beforeEach(inject(function(_$controller_){
-    $controller = _$controller_;
-
-    $controller('editQuizCtrl', {
+    _$controller_('editQuizCtrl', {
       $scope: $scope,
-      $routeParams: $routeParams,
+      $routeParams: {},
       Quiz: Quiz
     });
 
@@ -123,7 +120,9 @@ describe('editQuizCtrl', function() {
   describe('$scope.editQuiz', function() {
     it('Update new input to the form', function() {
       spyOn(Quiz, 'update');
+
       $scope.editQuiz();
+
       expect(Quiz.update).toHaveBeenCalled();
     });
   });
