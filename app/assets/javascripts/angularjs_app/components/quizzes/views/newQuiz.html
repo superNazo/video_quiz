@@ -1,17 +1,21 @@
 <h1>New Quiz</h1>
-
-<form ng-submit="addPost()">
-  <label>Name <br>
-    <input type="text" ng-model="quiz.name"></input>
+<form>
+<div class="input-group">
+  <label class="input-group-addon sizing-addon-md">Name</label>
+  <input type="text" class="form-control" ng-model="quiz.name"></input>
+</div>
+<h3>Questions</h3>
+<div class="form-group" ng-repeat="question in quiz.questions_attributes">
+  <label> {{$index+1}} Content
+    <br>
+    <textarea type="text" ng-model="question.content"></textarea>
   </label>
-  <h3>Questions</h3>
-  <div ng-repeat="question in quiz.questions_attributes">
-	<label>Content <br>
-	  <input type="text" ng-model="question.content"></input>
-	</label>
-  </div>
-  <button ng-click="add()">+</button>
-  <br><br><button type="submit" ng-click="createQuiz()">Create Quiz</button>
+</div>
+<div class="form-group ">
+  <button class="btn btn-default" ng-click="add()">Add question</button>
+</div>
+<div class="form-group clearfix">
+  <a href="#" class="btn btn-danger pull-left">Back</a>
+  <button type="submit" class="btn btn-success pull-right" ng-click="createQuiz()">Create Quiz</button>
+</div>
 </form>
-
-<br/><a href="#">Back</a>
