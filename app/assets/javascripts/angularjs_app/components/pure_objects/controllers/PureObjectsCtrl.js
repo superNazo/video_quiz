@@ -1,7 +1,13 @@
 function Glue() {};
 
 Glue.perform = function($scope, constructor) {
-  // You code goes here
+  for (var method in constructor.prototype) {
+    if (constructor.prototype.hasOwnProperty(method)) {
+      $scope[method] = constructor.prototype[method];
+    }
+  }
+
+  $scope.initialize();
 };
 
 
