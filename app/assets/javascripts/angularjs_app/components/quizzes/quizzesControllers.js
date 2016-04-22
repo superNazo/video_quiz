@@ -77,3 +77,9 @@ quizzesControllers.controller('startQuizCtrl', ['$scope', '$routeParams', 'Quiz'
     $scope.quiz = Quiz.get({id: $routeParams.quiz_id});
   }
 ]);
+
+quizzesControllers.controller('showQuizCtrl', ['$scope', 'Quiz', '$routeParams',
+  function($scope, Quiz, $routeParams) {
+    $scope.quiz = Quiz.show({id: $routeParams.quizId});
+  }
+]);
