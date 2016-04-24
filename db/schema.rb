@@ -11,13 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160317123733) do
+ActiveRecord::Schema.define(version: 20160420074807) do
 
   create_table "questions", force: :cascade do |t|
     t.text     "content"
     t.integer  "quiz_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.integer  "record_time_limit"
   end
 
   add_index "questions", ["quiz_id"], name: "index_questions_on_quiz_id"

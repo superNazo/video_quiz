@@ -1,17 +1,9 @@
 <h1>Edit Quiz</h1>
 
 <form>
-  <label>Name<br>
-    <input type="text" ng-model="quiz.name"></input>
-  </label>
-  <h3>Questions</h3>
-  <div ng-repeat="question in quiz.questions">
-  <label>Content <br>
-    <input type="text" ng-model="question.content"></input>
-  </label>
+  <div ng-include src="'angularjs_app/components/quizzes/views/_form.html'"></div>
+  <div class="form-group clearfix">
+    <a href="/quizzes" class="link-to btn btn-danger">Back</a>
+    <input type="submit" class="link-to btn btn-success" ng-click="editQuiz()" value="Update"/>
   </div>
-  <button ng-click="add()">+</button>
-  <br><br><input type="submit" class="link-to btn btn-success" ng-click="editQuiz()" value="Update"/>
 </form>
-
-<br/><a href="/quizzes" class="link-to btn btn-danger">Back</a>
