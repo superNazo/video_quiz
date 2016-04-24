@@ -1,22 +1,22 @@
 var quizzesControllers = angular.module('quizzesControllers', []);
 
-quizzesControllers.controller('newQuizCtrl', ['$scope', '$http', '$window',
-  function($scope, $http, $window){
-    $scope.quiz = {};
-    $scope.quiz.questions_attributes = [{content: ''}];
+var pushEmptyQuestionTo = function(questionsAttributes) {
+  return questionsAttributes.push({
+    content: '', record_time_limit: ''
+  });
+};
 
-    $scope.add = function(){
-      $scope.quiz.questions_attributes.push({
-        content: ''
-      });
+quizzesControllers.controller('newQuizCtrl', ['$scope', '$http', '$location', 'Quizzes',
+  function($scope, $http, $location, Quizzes){
+    $scope.quiz = {questions_attributes:[{content: '', record_time_limit: ''}]};
+
+    $scope.addQuestion = function(){
+      pushEmptyQuestionTo($scope.quiz.questions_attributes);
     };
 
     $scope.createQuiz = function(){
-      // We need to test that $http object calls `post`
-      // function and passes specific arguments?
-      $http.post('/quizzes', {'quiz': $scope.quiz}).then(function(){
-        $window.location.href = '/quizzes';
-      });
+      Quizzes.save({quiz: $scope.quiz});
+      $location.path('/quizzes');
     };
   }
 ]);
@@ -38,9 +38,9 @@ quizzesControllers.controller('indexQuizCtrl',
 
     $scope.deleteQuiz = function (quizId) {
       if ($scope.confirm('Are you sure you want to delete this quiz?')){
-        Quiz.delete({id: quizId}, function(){
+        Quiz.delete({quizId: quizId}, function(){
           $scope.quizzes = Quizzes.query();
-          $location.path('/');
+          $location.path('/quizzes');
         });
       }
     };
@@ -50,21 +50,16 @@ quizzesControllers.controller('indexQuizCtrl',
 quizzesControllers.controller('editQuizCtrl',
   ['$scope', '$routeParams', '$location', 'Quiz',
   function($scope, $routeParams, $location, Quiz) {
-    $scope.quiz = Quiz.show({id: $routeParams.quizId});
+    $scope.quiz = Quiz.show({quizId: $routeParams.quizId});
 
-    $scope.add = function(){
-      $scope.quiz.questions.push({
-        content: ''
-      });
+    $scope.addQuestion = function(){
+      pushEmptyQuestionTo($scope.quiz.questions_attributes);
     };
 
     $scope.editQuiz = function() {
       Quiz.update({
-        id: $routeParams.quizId,
-        quiz: {
-          name: $scope.quiz.name,
-          questions_attributes: $scope.quiz.questions
-        }
+        quizId: $routeParams.quizId,
+        quiz: $scope.quiz
       }, function() {
         $location.path('/quizzes');
       });
@@ -74,12 +69,12 @@ quizzesControllers.controller('editQuizCtrl',
 
 quizzesControllers.controller('startQuizCtrl', ['$scope', '$routeParams', 'Quiz',
   function($scope, $routeParams, Quiz) {
-    $scope.quiz = Quiz.get({id: $routeParams.quizId});
+    $scope.quiz = Quiz.get({quizId: $routeParams.quizId});
   }
 ]);
 
 quizzesControllers.controller('showQuizCtrl', ['$scope', 'Quiz', '$routeParams',
   function($scope, Quiz, $routeParams) {
-    $scope.quiz = Quiz.show({id: $routeParams.quizId});
+    $scope.quiz = Quiz.show({quizId: $routeParams.quizId});
   }
 ]);
