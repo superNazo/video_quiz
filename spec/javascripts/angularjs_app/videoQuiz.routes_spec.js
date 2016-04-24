@@ -8,32 +8,87 @@ describe("videoQuizRoutes", function() {
     });
   });
 
-  describe('/:quiz_id/start route', function() {
+  it('should load /quizzes when routes is empty', function() {
+    expect(route.routes[null].redirectTo).toEqual('/quizzes');
+  });
+
+  describe('/:quizId/start route', function() {
     it('should be defined', function() {
-      var startQuizRoute = route.routes['/:quiz_id/start'];
+      var startQuizRoute = route.routes['/quizzes/:quizId/start'];
       expect(startQuizRoute).toBeDefined();
     });
 
     it('should have right template', function() {
-      var startQuizRoute = route.routes['/:quiz_id/start'];
+      var startQuizRoute = route.routes['/quizzes/:quizId/start'];
       expect(startQuizRoute.templateUrl).toEqual('angularjs_app/components/quizzes/views/startQuiz.html');
     });
 
     it('should have right controller', function() {
-      var startQuizRoute = route.routes['/:quiz_id/start'];
+      var startQuizRoute = route.routes['/quizzes/:quizId/start'];
       expect(startQuizRoute.controller).toEqual('startQuizCtrl');
     });
   });
 
-  describe('/:quiz_id/finish route', function() {
+  describe('/:quizId/finish route', function() {
     it('should be defined', function() {
-      var finishQuizRoute = route.routes['/:quiz_id/finish'];
+      var finishQuizRoute = route.routes['/quizzes/:quizId/finish'];
       expect(finishQuizRoute).toBeDefined();
     });
 
     it('should have right template', function() {
-      var finishQuizRoute = route.routes['/:quiz_id/finish'];
+      var finishQuizRoute = route.routes['/quizzes/:quizId/finish'];
       expect(finishQuizRoute.templateUrl).toEqual('angularjs_app/components/quizzes/views/finishQuiz.html');
+    });
+  });
+
+  describe('/quizzes route', function() {
+    it('should be defined', function() {
+      var quizzesRoute = route.routes['/quizzes'];
+      expect(quizzesRoute).toBeDefined();
+    });
+
+    it('should have right template', function() {
+      var quizzesRoute = route.routes['/quizzes'];
+      expect(quizzesRoute.templateUrl).toEqual('angularjs_app/components/quizzes/views/indexQuiz.html');
+    });
+
+    it('should have right controller', function() {
+      var quizzesRoute = route.routes['/quizzes'];
+      expect(quizzesRoute.controller).toEqual('indexQuizCtrl');
+    });
+  });
+
+  describe('/quizzes/new route', function() {
+    it('should be defined', function() {
+      var newQuizRoute = route.routes['/quizzes/new'];
+      expect(newQuizRoute).toBeDefined();
+    });
+
+    it('should have right template', function() {
+      var newQuizRoute = route.routes['/quizzes/new'];
+      expect(newQuizRoute.templateUrl).toEqual('angularjs_app/components/quizzes/views/newQuiz.html');
+    });
+
+    it('should have right controller', function() {
+      var newQuizRoute = route.routes['/quizzes/new'];
+      expect(newQuizRoute.controller).toEqual('newQuizCtrl');
+    });
+  });
+
+  describe('/quizzes/:quizId/edit route', function() {
+    it('should be defined', function() {
+      var newQuizRoute = route.routes['/quizzes/:quizId/edit'];
+      expect(newQuizRoute).toBeDefined();
+    });
+
+    it('should have right template', function() {
+      var newQuizRoute = route.routes['/quizzes/:quizId/edit'];
+      expect(newQuizRoute.templateUrl).toEqual('angularjs_app/components/quizzes/views/editQuiz.html');
+    });
+
+    it('should have right controller', function() {
+      var newQuizRoute = route.routes['/quizzes/:quizId/edit'];
+      expect(newQuizRoute.controller).toEqual('editQuizCtrl');
     });
   });
 

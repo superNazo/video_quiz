@@ -38,9 +38,9 @@ quizzesControllers.controller('indexQuizCtrl',
 
     $scope.deleteQuiz = function (quizId) {
       if ($scope.confirm('Are you sure you want to delete this quiz?')){
-        Quiz.delete({id: quizId}, function(){
+        Quiz.delete({quizId: quizId}, function(){
           $scope.quizzes = Quizzes.query();
-          $location.path('/');
+          $location.path('/quizzes');
         });
       }
     };
@@ -50,7 +50,7 @@ quizzesControllers.controller('indexQuizCtrl',
 quizzesControllers.controller('editQuizCtrl',
   ['$scope', '$routeParams', '$location', 'Quiz',
   function($scope, $routeParams, $location, Quiz) {
-    $scope.quiz = Quiz.show({id: $routeParams.quiz_id});
+    $scope.quiz = Quiz.show({quizId: $routeParams.quizId});
 
     $scope.add = function(){
       $scope.quiz.questions.push({
@@ -60,7 +60,7 @@ quizzesControllers.controller('editQuizCtrl',
 
     $scope.editQuiz = function() {
       Quiz.update({
-        id: $routeParams.quiz_id,
+        quizId: $routeParams.quizId,
         quiz: {
           name: $scope.quiz.name,
           questions_attributes: $scope.quiz.questions
@@ -74,7 +74,7 @@ quizzesControllers.controller('editQuizCtrl',
 
 quizzesControllers.controller('startQuizCtrl', ['$scope', '$routeParams', 'Quiz',
   function($scope, $routeParams, Quiz) {
-    $scope.quiz = Quiz.get({id: $routeParams.quiz_id});
+    $scope.quiz = Quiz.get({quizId: $routeParams.quizId});
   }
 ]);
 
