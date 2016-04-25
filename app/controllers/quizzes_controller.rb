@@ -4,7 +4,9 @@ class QuizzesController < ApplicationController
 
   # GET /quizzes
   def index
-    @quizzes = Quiz.all.paginate(page: params[:page], per_page: 10)
+    @quizzes = Quiz.all.paginate(page: params[:page], per_page: 5)
+    render json: {  max: @quizzes.total_pages,
+                    quizzes_array: @quizzes.as_json() }
   end
 
   # GET /quizzes/1

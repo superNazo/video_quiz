@@ -23,9 +23,39 @@ quizzesControllers.controller('newQuizCtrl', ['$scope', '$http', '$window',
 
 quizzesControllers.controller('indexQuizCtrl',
   ['$scope', '$location', 'Quizzes', 'Quiz',
-  function($scope, $location, Quizzes, Quiz ) {
-
+  function($scope, $location, Quizzes, Quiz) {
     $scope.quizzes = Quizzes.query();
+    // $scope.quizzes = $scope.quizzes_array;
+
+    // $scope.route = '/quizzes';
+    // $scope.goToPage = function(pageNumber) {
+    //   return paginationService.getPage(pageNumber, $scope.route, $scope);
+    // };
+
+    // $scope.goToPage(1);
+
+    // Pagination
+
+    // $scope.quizzes = [];
+    // $scope.totalQuizzes = 0;
+    // $scope.quizzesPerPage = 2;
+    // getResultsPage(1);
+
+    // $scope.pagination = { current: 1 };
+
+    // $scope.pageChanged = function(newPage) {
+    //   getResultsPage(newPage);
+    // };
+
+    // function getResultsPage(pageNumber) {
+    //   $http.get('/quizzes?page='+pageNumber)
+    //     .then(function(result){
+    //       $scope.quizzes = result.data;
+    //       $scope.totalQuizzes = $scope.quizzes.length;
+    //     })
+    // }
+
+    //------------------------
 
     $scope.sort = function(keyname) {
       $scope.sortKey = keyname;
@@ -44,6 +74,20 @@ quizzesControllers.controller('indexQuizCtrl',
         });
       }
     };
+  }
+]);
+
+quizzesControllers.controller('paginationCtrl',
+  ['$scope', 'paginationService',
+  function($scope, paginationService) {
+    $scope.quizzes = $scope.quizzes_array;
+
+    $scope.route = '/quizzes';
+    $scope.goToPage = function(pageNumber) {
+      return paginationService.getPage(pageNumber, $scope.route, $scope);
+    };
+
+    $scope.goToPage(1);
   }
 ]);
 

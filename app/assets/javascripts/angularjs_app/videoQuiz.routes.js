@@ -7,6 +7,10 @@ videoQuizRoutes.config(['$routeProvider',
       templateUrl: 'angularjs_app/components/quizzes/views/indexQuiz.html',
       controller: 'indexQuizCtrl'
     }).
+    when('/quizzes', {
+      templateUrl: 'angularjs_app/components/quizzes/views/indexQuiz.html',
+      controller: 'paginationCtrl'
+    }).
     when('/new', {
       templateUrl: 'angularjs_app/components/quizzes/views/newQuiz.html',
       controller: 'newQuizCtrl'

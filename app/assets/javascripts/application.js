@@ -20,5 +20,6 @@
 //= require angular-mocks
 //= require angularjs_app/dirPagination
 //= require angular-rails-templates
+//= require ng_will_paginate
 //= require cocoon
 //= require_tree .

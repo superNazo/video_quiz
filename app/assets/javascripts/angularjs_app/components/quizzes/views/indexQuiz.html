@@ -18,7 +18,7 @@
   </div>
 </div>
 <ul class="list-group">
-  <li dir-paginate="quiz in quizzes | orderBy:sortKey:reverse | filter:search | itemsPerPage:5" class="list-group-item">
+  <li ng-repeat="quiz in quizzes | orderBy:sortKey:reverse | filter:search" class="list-group-item">
     <div class="row">
       <div class="col-xs-7">
         <a href="quizzes#/{{quiz.id}}/start" class="link-to btn btn-success">Start quiz</a>
@@ -33,4 +33,4 @@
   </li>
 </ul>
 <a href="quizzes#/new" class="link-to btn btn-success right">New quiz</a>
-<dir-pagination-controls max-size="5" direction-links="true" boundary-links="true"></dir-pagination-controls>
+<pagination></pagination>

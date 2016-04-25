@@ -130,6 +130,8 @@ GEM
     multi_json (1.11.2)
     multi_xml (0.5.5)
     multipart-post (2.0.0)
+    ng_will_paginate (0.3.1)
+      will_paginate
     nokogiri (1.6.7.2)
       mini_portile2 (~> 2.0.0.rc2)
     oauth2 (1.1.0)
@@ -267,6 +269,7 @@ DEPENDENCIES
   jasmine
   jbuilder (= 2.2.3)
   jquery-rails (= 4.0.3)
+  ng_will_paginate
   omniauth-facebook
   pg (= 0.17.1)
   rails (= 4.2.2)
@@ -279,7 +282,7 @@ DEPENDENCIES
   turbolinks (= 2.3.0)
   uglifier (= 2.5.3)
   web-console (= 2.0.0.beta3)
-  will_paginate (~> 3.0.6)
+  will_paginate
 
 BUNDLED WITH
    1.11.2

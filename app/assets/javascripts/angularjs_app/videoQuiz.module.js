@@ -5,6 +5,7 @@ var videoQuiz = angular.module('videoQuiz', [
   'videoQuizRoutes',
   'quizzesControllers',
   'videoQuizServices',
+  'ng-will-paginate',
   'angularUtils.directives.dirPagination'
 ]);
 
