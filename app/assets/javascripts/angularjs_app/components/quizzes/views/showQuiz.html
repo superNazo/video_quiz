@@ -8,11 +8,11 @@
 </ul>
 <div>
   <h1>Listing questions :</h1>
-  <p class="list-group-item list-group-item-warning" ng-if="(quiz.questions).length === 0">
+  <p class="list-group-item list-group-item-warning" ng-if="(quiz.questions_attributes).length === 0">
     No questions here.
   </p>
   <ul class="list-group">
-    <h2 class="list-group-item" ng-repeat="question in quiz.questions">{{question.content}}</h2>
+    <h2 class="list-group-item" ng-repeat="question in quiz.questions_attributes">{{question.content}}, (record time limit: <b>{{ question.record_time_limit }}</b> sec.)</h2>
   </ul>
 </div>
 

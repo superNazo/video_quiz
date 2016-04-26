@@ -15,6 +15,10 @@ videoQuizRoutes.config(['$routeProvider', '$locationProvider',
       templateUrl: 'angularjs_app/components/quizzes/views/editQuiz.html',
       controller: 'editQuizCtrl'
     }).
+    when('/quizzes/:quizId/show', {
+      templateUrl: 'angularjs_app/components/quizzes/views/showQuiz.html',
+      controller: 'showQuizCtrl'
+    }).
     when('/quizzes/:quizId/start', {
       templateUrl: 'angularjs_app/components/quizzes/views/startQuiz.html',
       controller: 'startQuizCtrl'
