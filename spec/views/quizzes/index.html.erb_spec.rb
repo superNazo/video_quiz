@@ -5,16 +5,16 @@ RSpec.describe "quizzes/index", type: :view do
     view.stub(:will_paginate)
     assign(:quizzes, [
       Quiz.create!(
-        :name => "Name"
+        name: "Name"
       ),
       Quiz.create!(
-        :name => "Name"
+        name: "Name2"
       )
     ])
   end
 
   it "renders a list of quizzes" do
     render
-    assert_select "tr>td", :text => "Name".to_s, :count => 2
+    assert_select "div=>span", :text => "Name".to_s, :count => 2
   end
 end

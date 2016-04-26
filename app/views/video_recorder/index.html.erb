@@ -1,30 +1,34 @@
-</br>
+<div class="row">
+  <ul class="list-group">
+      <div class="col-xs-8">
+        <li class="list-group-item">
+          <h2>Question #1</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+      </div>
+      <div class="col-xs-4">
+        <button type="button" class="btn btn-success btn-wide" data-toggle="modal" data-target="#videoRecorderModal">
+          Record Video
+        </button>
+      </div>
+    </li>
+  </ul>
+</div>
 
 <div class="container-fluid">
 <div class="row">
-  <div class="col-xs-8 col-xs-offset-2">
-    <div class="jumbotron">
-      <h1>Are you ready to ROCK?!</h1>
-      <p>Start to record your video answers IMMEDIATELY, because it's just so easy, save your time for typing some text - BE A PART OF US!</p>
-      <button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#videoRecorderModal">
-        Record Video
-      </button>
-    </div><!-- jumbotron -->
-  </div><!-- col-xs-8 col-xs-offset-2 -->
-</div><!-- row -->
-</div><!-- container-fluid -->
-
-<div class="container-fluid">
-<div class="row">
-  <div class="col-xs-8 col-xs-offset-2">
+  <div class="col-xs-8">
     <% @all_videos.each_slice(3) do |row_chunk| %>
-    <div class="row">
       <% row_chunk.each do |video_token| %>
       <div class="col-xs-4">
-        <ziggeo ziggeo-video="<%= video_token %>" ziggeo-width=320 ziggeo-height=240></ziggeo>
+        <ziggeo ziggeo-video="<%= video_token %>" ziggeo-width=240 ziggeo-height=240></ziggeo>
       </div><!-- col-xs-4 -->
       <% end %>
-    </div><!-- row -->
   </br>
   <% end %>
 </div><!-- col-xs-8 col-xs-offset-2 -->
@@ -59,7 +63,7 @@
     </div>
   </div><!-- modal-body -->
   <div class="modal-footer">
-    <button type="button" id="reload-page" class="btn btn-primary" data-dismiss="modal">Close resorder</button>
+    <button type="button" id="reload-page" class="btn btn-primary" data-dismiss="modal">Close</button>
   </div><!-- modal-footer -->
 </div><!-- modal-content -->
 </div><!-- modal-dialog -->
