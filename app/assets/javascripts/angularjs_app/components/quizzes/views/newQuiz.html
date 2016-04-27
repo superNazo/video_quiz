@@ -1,8 +1,8 @@
 <h1>New Quiz</h1>
-<form>
+<form ng-submit="createQuiz()">
   <div ng-include src="'angularjs_app/components/quizzes/views/_form.html'"></div>
   <div class="form-group clearfix">
     <a href="/quizzes" class="link-to btn btn-danger">Back</a>
-    <input type="submit" class="link-to btn btn-success" ng-click="createQuiz()" value="Create"/>
+    <input type="submit" class="link-to btn btn-success" value="Create"/>
   </div>
 </form>
