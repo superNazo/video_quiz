@@ -21,26 +21,12 @@ var Stopwatch = React.createClass({
   },
 
   render: function() {
-    var elapsed = Math.round(this.state.elapsed);
-    var seconds = (elapsed / 10).toFixed(1);
-    var secondsStyle = {color: 'red'};
 
     return (
-      <span style={secondsStyle}>
-        {seconds}
+      <span className={"stopwatch seconds"}>
+        {this.state.seconds}
       </span>
     );
   }
+
 });
-
-var renderStopwatch = function(seconds, autorun) {
-  var stopwatchStores = {StopwatchStore: new StopwatchStore()};
-  var stopwatchFlux = new Fluxxor.Flux(stopwatchStores, stopwatchActions);
-  var settedId = id || "stopwatch";
-
-  ReactDOM.render(
-    <Stopwatch flux={stopwatchFlux}
-               setTime={seconds}
-               autorun={autorun}/>, document.getElementById(settedId)
-  );
-};

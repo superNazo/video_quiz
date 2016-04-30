@@ -1,7 +1,8 @@
 var StopwatchStore = Fluxxor.createStore({
   initialize: function() {
     this.elapsed = 0;
-    this.timeLimit = 0;
+    this.seconds;
+    this.timeLimit;
     this.statusMessages = {
       ready: "Ready",
       inProgress: "In progress",
@@ -9,7 +10,7 @@ var StopwatchStore = Fluxxor.createStore({
       finished: "Finished",
       reset: "Reseted"
     };
-    this.status = "";
+    this.status;
 
     this.bindActions(
       constants.SET_STOPWATCH, this.onSetStopwatch,
@@ -20,7 +21,8 @@ var StopwatchStore = Fluxxor.createStore({
   },
 
   onSetStopwatch: function(payload) {
-    this.timeLimit = payload.timeLimit * 10;
+    this.timeLimit = payload.timeLimit;
+    this.seconds = this.elapsed.toFixed(1);
     this.status = this.statusMessages.ready;
   },
 
@@ -39,14 +41,16 @@ var StopwatchStore = Fluxxor.createStore({
 
   onResetStopwatch: function() {
     this.elapsed = 0;
+    this.seconds = this.elapsed.toFixed(1);
     this.status = this.statusMessages.reset;
     this.emit("change");
   },
 
   _tick: function() {
     this.elapsed < this.timeLimit
-      ? this.elapsed = this.elapsed + 1
+      ? this.elapsed = this.elapsed + 0.1
       : this._finished();
+    this.seconds = this.elapsed.toFixed(1);
     this.emit("change");
   },
 
@@ -58,6 +62,7 @@ var StopwatchStore = Fluxxor.createStore({
   getState: function() {
     return {
       elapsed: this.elapsed,
+      seconds: this.seconds,
       statusMessages: this.statusMessages,
       status: this.status
     };

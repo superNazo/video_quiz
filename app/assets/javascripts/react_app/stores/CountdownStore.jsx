@@ -1,6 +1,7 @@
 var CountdownStore = Fluxxor.createStore({
   initialize: function() {
-    this.countdown = 0;
+    this.countdown;
+    this.seconds;
     this.statusMessages = {
       ready: "Ready",
       inProgress: "In progress",
@@ -8,7 +9,7 @@ var CountdownStore = Fluxxor.createStore({
       finished: "Finished",
       reset: "Reseted"
     };
-    this.status = "";
+    this.status;
 
     this.bindActions(
       constants.SET_COUNTDOWN, this.onSetCountdown,
@@ -19,7 +20,8 @@ var CountdownStore = Fluxxor.createStore({
   },
 
   onSetCountdown: function(payload) {
-    this.countdown = payload.countdown * 10;
+    this.countdown = payload.countdown;
+    this.seconds = this.countdown.toFixed(1)
     this.status = this.statusMessages.ready;
     this.emit("change");
   },
@@ -39,15 +41,17 @@ var CountdownStore = Fluxxor.createStore({
 
   onResetCountdown: function(payload) {
     clearInterval(this.counter);
-    this.countdown = payload.countdown * 10;
+    this.countdown = payload.countdown;
+    this.seconds = this.countdown.toFixed(1);
     this.status = this.statusMessages.reset;
     this.emit("change");
   },
 
   _tick: function() {
-    this.countdown > 0
-      ? this.countdown = this.countdown - 1
+    this.countdown >= 0.1
+      ? this.countdown = this.countdown - 0.1
       : this._finished();
+    this.seconds = this.countdown.toFixed(1);
     this.emit("change");
   },
 
@@ -59,6 +63,7 @@ var CountdownStore = Fluxxor.createStore({
   getState: function() {
     return {
       countdown: this.countdown,
+      seconds: this.seconds,
       statusMessages: this.statusMessages,
       status: this.status
     };

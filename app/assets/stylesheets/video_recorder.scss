@@ -1,6 +1,7 @@
 $main-green: #5CC790;
 $white: white;
 $dark-white: #EDEFF2;
+$red: red;
 
 /*================================*/
 /*  Style classes from ZiggeoApi  */
@@ -28,6 +29,15 @@ $dark-white: #EDEFF2;
 
 .video-recorder.component .status-bar {
   padding: 10px 20px 10px 20px;
+}
+
+
+.video-recorder.component .countdown.seconds {
+  color: $red;
+}
+
+.video-recorder.component .stopwatch.seconds {
+  color: $red;
 }
 
 .status-bar p {
