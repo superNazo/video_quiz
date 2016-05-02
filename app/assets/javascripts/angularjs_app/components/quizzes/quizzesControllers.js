@@ -22,17 +22,17 @@ quizzesControllers.controller('newQuizCtrl', ['$scope', '$http', '$window',
 ]);
 
 quizzesControllers.controller('indexQuizCtrl',
-  ['$scope', '$location', 'Quizzes', 'Quiz',
-  function($scope, $location, Quizzes, Quiz) {
-    $scope.quizzes = Quizzes.query();
-    // $scope.quizzes = $scope.quizzes_array;
+  ['$scope', '$location', 'Quizzes', 'Quiz', 'paginationService',
+  function($scope, $location, Quizzes, Quiz, paginationService) {
+    // $scope.quizzes = Quizzes.query();
+    $scope.quizzes = $scope.quizzes;
 
-    // $scope.route = '/quizzes';
-    // $scope.goToPage = function(pageNumber) {
-    //   return paginationService.getPage(pageNumber, $scope.route, $scope);
-    // };
+    $scope.route = '/quizzes.json';
+    $scope.goToPage = function(pageNumber) {
+      return paginationService.getPage(pageNumber, $scope.route, $scope);
+    };
 
-    // $scope.goToPage(1);
+    $scope.goToPage(1);
 
     // Pagination
 
