@@ -32,11 +32,6 @@ quizzesControllers.controller('indexQuizCtrl',
 
     $scope.quizzes = Quizzes.query();
 
-    $scope.sort = function(keyname) {
-      $scope.sortKey = keyname;
-      $scope.reverse = !$scope.reverse;
-    };
-
     $scope.confirm = function(msg) {
       return confirm(msg);
     };

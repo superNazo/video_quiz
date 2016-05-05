@@ -48,21 +48,6 @@ describe('quizzesControllers', function() {
       });
     }));
 
-    it('should change the sorting key', function() {
-      scope.sort('name');
-
-      expect(scope.sortKey).toEqual('name');
-    });
-
-    it('should change the order of sorting quizzes to reverse', function() {
-      scope.reverse = false;
-
-      scope.sort();
-
-      expect(scope.reverse).toBe(true);
-    });
-
-
     it('should delete quiz from quizzes list', function() {
       spyOn(Quiz, 'delete');
       scope.confirm = function(msg) { return true; };
