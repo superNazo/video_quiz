@@ -91,6 +91,5 @@ describe('quizzesControllers', function() {
       scope.removeQuestion(scope.quiz.question);
       expect(scope.quiz.question._destroy).toEqual(true);
     });
-  });
-
+  }); 
 });
