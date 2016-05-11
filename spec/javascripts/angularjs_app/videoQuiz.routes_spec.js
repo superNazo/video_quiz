@@ -116,13 +116,13 @@ describe('videoQuizRoutes', function(){
 
       $httpBackend
         .when('GET', 'angularjs_app/components/quizzes/views/showQuiz.html')
-        .respond('/quizzes/:quizId/show');
+        .respond('/quizzes/:quizId');
     });
   });
 
   it('should navigate to show quiz template', function(){
     $rootScope.$apply(function() {
-      $location.path('/quizzes/:quizId/show');
+      $location.path('/quizzes/:quizId');
     });
 
     expect($route.current.templateUrl)
@@ -131,7 +131,7 @@ describe('videoQuizRoutes', function(){
 
   it('should use showQuizCtrl', function(){
     $rootScope.$apply(function() {
-      $location.path('/quizzes/:quizId/show');
+      $location.path('/quizzes/:quizId');
     });
 
     expect($route.current.controller).toBe('showQuizCtrl');
@@ -139,10 +139,10 @@ describe('videoQuizRoutes', function(){
 
   it('should use path to show quiz', function(){
     $rootScope.$apply(function() {
-      $location.path('/quizzes/:quizId/show');
+      $location.path('/quizzes/:quizId');
     });
 
-    expect($location.path()).toBe('/quizzes/:quizId/show');
+    expect($location.path()).toBe('/quizzes/:quizId');
   });
 
   it('should redirect invalid URLs to all quizzes template', function(){
