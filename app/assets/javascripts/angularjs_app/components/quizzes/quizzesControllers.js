@@ -87,3 +87,18 @@ quizzesControllers.controller('showQuizCtrl', ['$scope', 'Quiz', '$routeParams',
     $scope.quiz = Quiz.show({quizId: $routeParams.quizId});
   }
 ]);
+
+quizzesControllers.controller('answerQuizCtrl', ['$scope', 'Quiz', '$routeParams', '$location',
+  function($scope, Quiz, $routeParams, $location) {
+    $scope.quiz = Quiz.show({quizId: $routeParams.quizId});
+    $scope.currentQuestion = 0;
+
+    $scope.nextQuestion = function(){
+      $scope.currentQuestion = $scope.currentQuestion +1;
+      if($scope.currentQuestion == $scope.quiz.questions_attributes.length){
+        $location.path('/quizzes/'+ $routeParams.quizId +'/finish');
+      }
+    }
+  }
+]);
+

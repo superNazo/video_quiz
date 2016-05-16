@@ -1,0 +1,5 @@
+
+{{ quiz.questions_attributes[currentQuestion].content }}
+<button ng-click="nextQuestion()">
+ {{ currentQuestion == quiz.questions_attributes.length - 1 ? 'Finish' : 'Next' }}
+</button>

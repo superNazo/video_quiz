@@ -23,9 +23,15 @@ videoQuizRoutes.config(['$routeProvider', '$locationProvider',
       templateUrl: 'angularjs_app/components/quizzes/views/startQuiz.html',
       controller: 'startQuizCtrl'
     }).
+    when('/quizzes/:quizId/answer', {
+      templateUrl: 'angularjs_app/components/quizzes/views/answerQuiz.html',
+      controller: 'answerQuizCtrl'
+    }).
     when('/quizzes/:quizId/finish', {
       templateUrl: 'angularjs_app/components/quizzes/views/finishQuiz.html'
     }).
+
+
     otherwise({
       redirectTo: '/quizzes'
     });
