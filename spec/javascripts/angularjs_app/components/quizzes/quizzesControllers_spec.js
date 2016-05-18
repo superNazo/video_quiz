@@ -1,15 +1,22 @@
 describe('quizzesControllers', function() {
-  var scope, controller, routeParams, Quizzes, Quiz;
+  var scope, controller, routeParams, Quizzes, Quiz, QuestionsHelper;
 
   scope = {};
   routeParams = {};
   Quizzes = {
+    save:  function() {},
     query: function() {}
   };
   Quiz = {
-    show: function() {},
+    show:   function() {},
     update: function() {},
     delete: function() {}
+  };
+  QuestionsHelper = {
+    countQuestions:      function() {},
+    checkAbsence:        function() {},
+    restrictAdding:      function() {},
+    pushEmptyQuestionTo: function() {},
   };
 
   beforeEach(module('quizzesControllers'));
@@ -19,22 +26,41 @@ describe('quizzesControllers', function() {
       controller = _$controller_;
       controller('newQuizCtrl', {
         $scope: scope,
-        Quizzes: Quizzes
+        Quizzes: Quizzes,
+        Quiz: Quiz,
+        QuestionsHelper: QuestionsHelper
       });
     }));
 
-    it('should add new input to the form when pressing addQuestion button', function() {
-      scope.addQuestion();
-      expect(scope.quiz.questions_attributes.length).toEqual(2);
+    it('should use helper to add new question', function() {
+      expect(scope.addQuestion)
+        .toEqual(QuestionsHelper.pushEmptyQuestionTo);
+    });
+
+    it('$scope.countQuestions should use helper', function() {
+      expect(scope.countQuestions)
+        .toEqual(QuestionsHelper.countQuestions);
+    });
+
+    it('$scope.checkAbsence should use helper', function() {
+      expect(scope.checkAbsence)
+        .toEqual(QuestionsHelper.checkAbsence);
+    });
+
+    it('$scope.restrictAdding should use helper', function() {
+      expect(scope.restrictAdding)
+        .toEqual(QuestionsHelper.restrictAdding);
     });
 
     it('should remove correct input of question from the form', function() {
-      for (var i = 0; i < 2; i++) {
-        scope.addQuestion();
-      };
-
       scope.removeQuestion(scope.quiz.questions_attributes);
-      expect(scope.quiz.questions_attributes.length).toEqual(2);
+      expect(scope.quiz.questions_attributes.length).toEqual(0);
+    })
+
+    it('should save new quiz', function() {
+      spyOn(Quizzes, 'save');
+      scope.createQuiz();
+      expect(Quizzes.save).toHaveBeenCalled();
     });
   });
 
@@ -51,18 +77,14 @@ describe('quizzesControllers', function() {
     it('should delete quiz from quizzes list', function() {
       spyOn(Quiz, 'delete');
       scope.confirm = function(msg) { return true; };
-
       scope.deleteQuiz();
-
       expect(Quiz.delete).toHaveBeenCalled();
     });
 
     it('should cancel delete quiz from quizzes list', function() {
       spyOn(Quiz, 'delete');
       scope.confirm = function(msg) { return false; };
-
       scope.deleteQuiz();
-
       expect(Quiz.delete).not.toHaveBeenCalled();
     });
   });
@@ -73,17 +95,30 @@ describe('quizzesControllers', function() {
       controller('editQuizCtrl', {
         $scope: scope,
         $routeParams: routeParams,
-        Quiz: Quiz
+        Quiz: Quiz,
+        QuestionsHelper: QuestionsHelper
       });
-      scope.quiz = {};
+      scope.quiz = {questions_attributes:[{content: '', record_time_limit: ''}]};
     }));
 
-    it('should update new input to the form', function() {
-      spyOn(Quiz, 'update');
+    it('should use helper to add new question', function() {
+      expect(scope.addQuestion)
+        .toEqual(QuestionsHelper.pushEmptyQuestionTo);
+    });
 
-      scope.editQuiz();
+    it('$scope.countQuestions should use helper', function() {
+      expect(scope.countQuestions)
+        .toEqual(QuestionsHelper.countQuestions);
+    });
 
-      expect(Quiz.update).toHaveBeenCalled();
+    it('$scope.checkAbsence should use helper', function() {
+      expect(scope.checkAbsence)
+        .toEqual(QuestionsHelper.checkAbsence);
+    });
+
+    it('$scope.restrictAdding should use helper', function() {
+      expect(scope.restrictAdding)
+        .toEqual(QuestionsHelper.restrictAdding);
     });
 
     it('should set quiz.question._destroy option to the true when removing question', function() {
@@ -91,5 +126,29 @@ describe('quizzesControllers', function() {
       scope.removeQuestion(scope.quiz.question);
       expect(scope.quiz.question._destroy).toEqual(true);
     });
-  }); 
+
+    it('should update quiz', function() {
+      spyOn(Quiz, 'update');
+      scope.editQuiz();
+      expect(Quiz.update).toHaveBeenCalled();
+    });
+  });
+
+  describe('showQuizCtrl', function() {
+    beforeEach(inject(function(_$controller_) {
+      controller = _$controller_;
+      controller('showQuizCtrl', {
+        $scope: scope,
+        $routeParams: routeParams,
+        Quiz: Quiz,
+        QuestionsHelper: QuestionsHelper
+      });
+      scope.quiz = {questions_attributes:[{content: '', record_time_limit: ''}]};
+    }));
+
+    it('$scope.checkAbsence should use helper', function() {
+      expect(scope.checkAbsence)
+        .toEqual(QuestionsHelper.checkAbsence);
+    });
+  });
 });

@@ -6,6 +6,9 @@
   </div>
 </div>
 <p>Listing questions :</p>
+<p ng-if="checkAbsence()" class="alert alert-danger">
+  Sorry, no questions here.
+</p>
 <div class="panel panel-default" ng-repeat="question in quiz.questions_attributes">
   <div class="panel-heading">
     <h3 class="panel-title">{{question.content}}</h3>
