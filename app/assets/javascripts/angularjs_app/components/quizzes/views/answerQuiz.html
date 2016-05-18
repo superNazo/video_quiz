@@ -1,5 +1,15 @@
-
-{{ quiz.questions_attributes[currentQuestion].content }}
-<button ng-click="nextQuestion()">
+<div class="row">
+	<div class="col-md-8">
+		<p>
+			{{ quiz.questions_attributes[currentQuestion].content }}
+		</p>
+	</div>
+	<div class="col-md-4">
+		<form name="answerFrom">
+			<input ng-model="videoToken" type="text" class="form-control ng-pristine ng-valid ng-empty ng-touched" required>
+		</form>
+	</div>
+</div>
+<button class="btn btn-success ng-scope" ng-click="nextQuestion()" ng-disabled="answerFrom.$invalid">
  {{ currentQuestion == quiz.questions_attributes.length - 1 ? 'Finish' : 'Next' }}
 </button>

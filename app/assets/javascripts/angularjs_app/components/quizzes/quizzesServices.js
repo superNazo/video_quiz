@@ -14,3 +14,20 @@ videoQuizServices.factory('Quiz', ['$resource',
     });
   }
 ]);
+
+videoQuizServices.factory('Interview', ['$resource',
+  function($resource){
+    return $resource('quizzes/:quizId/interviews/create.json', {}, {
+      create: {method: 'POST', params: {quizId: '@quizId'}}      
+    });
+  }
+]);
+
+videoQuizServices.factory('Answer', ['$resource',
+  function($resource){
+    return $resource('quizzes/:quizId/answers.json', {}, {
+      create: {method: 'POST', params: {quizId: '@quizId'}}      
+    });
+  }
+]);
+

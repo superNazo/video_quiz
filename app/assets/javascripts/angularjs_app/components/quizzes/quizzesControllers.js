@@ -88,16 +88,27 @@ quizzesControllers.controller('showQuizCtrl', ['$scope', 'Quiz', '$routeParams',
   }
 ]);
 
-quizzesControllers.controller('answerQuizCtrl', ['$scope', 'Quiz', '$routeParams', '$location',
-  function($scope, Quiz, $routeParams, $location) {
+quizzesControllers.controller('answerQuizCtrl', ['$scope', 'Quiz', '$routeParams', '$location','Interview','Answer',
+  function($scope, Quiz, $routeParams, $location, Interview, Answer) {
     $scope.quiz = Quiz.show({quizId: $routeParams.quizId});
+    Interview.create({quizId: $routeParams.quizId});
     $scope.currentQuestion = 0;
 
     $scope.nextQuestion = function(){
-      $scope.currentQuestion = $scope.currentQuestion +1;
-      if($scope.currentQuestion == $scope.quiz.questions_attributes.length){
-        $location.path('/quizzes/'+ $routeParams.quizId +'/finish');
-      }
+     
+
+      Answer.create({
+        quizId: $routeParams.quizId,
+        answer:{video_token:  $scope.videoToken}
+      }, function() {
+        $scope.currentQuestion = $scope.currentQuestion +1;
+        $scope.videoToken = "";
+        if($scope.currentQuestion == $scope.quiz.questions_attributes.length){
+          $location.path('/quizzes/'+ $routeParams.quizId +'/finish');
+        }
+      });
+
+
     }
   }
 ]);

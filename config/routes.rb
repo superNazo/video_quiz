@@ -8,6 +8,10 @@ Rails.application.routes.draw do
     post "interviews/create", to: "interviews#create"
   end
 
+  get '/quizzes/:id/start', to: 'quizzes#index'
+  get '/quizzes/:id/finish', to: 'quizzes#index'
+  get '/quizzes/:id/answer', to: 'quizzes#index'
+
   devise_for :users, skip: [:password, :sessions],
                      controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
   devise_scope :user do
