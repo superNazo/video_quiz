@@ -15,7 +15,7 @@ RSpec.describe Users::OmniauthCallbacksController, type: :controller do
     end
 
     it "should redirect to quizzes path" do
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to logged_in_success_path
     end
   end
 end

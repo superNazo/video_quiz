@@ -4,7 +4,6 @@ RSpec.describe "layouts/application" do
     render
 
     expect(rendered).to match %r{<a href="/">Home</a>}
-    expect(rendered).to match %r{<a href="/users/auth/facebook">Sign in with Facebook</a>}
   end
 
   it "home page for sign in user" do
