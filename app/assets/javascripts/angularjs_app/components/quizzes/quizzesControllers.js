@@ -28,9 +28,17 @@ quizzesControllers.controller('newQuizCtrl', ['$scope', '$http', '$location', 'Q
 
 quizzesControllers.controller('indexQuizCtrl',
   ['$scope', '$location', 'Quizzes', 'Quiz',
-  function($scope, $location, Quizzes, Quiz ) {
+  function($scope, $location, Quizzes, Quiz) {
+    $scope.currentPage = 1;
 
-    $scope.quizzes = Quizzes.query();
+    $scope.setPage = function() {
+      Quizzes.query({page: $scope.currentPage}, function(data) {
+        $scope.quizzes = data.collection;
+        $scope.totalQuizzes = data.total_items;
+      });
+    };
+
+    $scope.setPage();
 
     $scope.confirm = function(msg) {
       return confirm(msg);

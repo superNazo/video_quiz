@@ -19,5 +19,7 @@
 //= require angular-resource
 //= require angular-mocks
 //= require angular-rails-templates
+//= require angular-animate
+//= require ui-bootstrap-tpls-1.3.2.min
 //= require cocoon
 //= require_tree .
