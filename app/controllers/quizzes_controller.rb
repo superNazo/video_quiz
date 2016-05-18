@@ -10,15 +10,27 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1
   # GET /quizzes/1.json
   def show
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :show }
+    end
   end
 
   # GET /quizzes/new
   def new
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :new }
+    end
     @quiz = Quiz.build_new
   end
 
   # GET /quizzes/1/edit
   def edit
+    respond_to do |format|
+      format.html { render :index }
+      format.json { render :edit }
+    end
   end
 
   # POST /quizzes
