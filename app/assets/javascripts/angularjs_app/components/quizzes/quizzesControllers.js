@@ -44,7 +44,7 @@ quizzesControllers.controller('indexQuizCtrl',
     $scope.deleteQuiz = function (quizId) {
       if ($scope.confirm('Are you sure you want to delete this quiz?')){
         Quiz.delete({quizId: quizId}, function(){
-          $scope.quizzes = Quizzes.query();
+          $scope.setPage();
           $location.path('/quizzes');
         });
       }
@@ -95,7 +95,7 @@ quizzesControllers.controller('showQuizCtrl',
 ]);
 
 quizzesControllers.controller('popUpCtrl', ['$scope',
-  function($scope) {   
+  function($scope) {
     $scope.authNetwork = function authNetwork() {
       var openUrl = 'users/auth/facebook';
       window.$windowScope = $scope;
