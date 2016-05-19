@@ -3,6 +3,7 @@ var videoQuiz = angular.module('videoQuiz', [
   'ngRoute',
   'ngResource',
   'videoQuizRoutes',
+  'homeControllers',
   'quizzesControllers',
   'videoQuizServices',
   'ngAnimate',
