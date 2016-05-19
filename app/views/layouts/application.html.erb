@@ -46,7 +46,10 @@
     <div class="container-fluid">
       <div class="container">
         <div class="jumbotron">
-          <%= yield %>
+          <div ng-view></div>
+          <div ng-if="false">
+            <%= yield %>
+          </div>
         </div>
       </div>
     </div>
