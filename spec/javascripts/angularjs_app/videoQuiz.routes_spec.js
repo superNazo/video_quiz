@@ -39,7 +39,7 @@ describe('videoQuizRoutes', function() {
     it('should have right template', function() {
       var loginRoute = route.routes['/'];
       expect(loginRoute.templateUrl)
-        .toEqual('angularjs_app/components/views/index.html');
+        .toEqual('angularjs_app/components/home/views/index.html');
     });
 
     it('should have right controller', function() {

@@ -1,79 +1,64 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import "video_recorder";
-
 // Variables
 $plain-white: #ffffff;
 $plain-black: #000000;
-$dark-gray:   #999999;
-
-
+$dark-gray: #999999;
 // Main
 body {
-  margin-top: 100px;
+    margin-top: 100px;
 }
-
 .link-to {
-  color: $plain-black;
-  text-decoration: none;
+    color: $plain-black;
+    text-decoration: none;
 }
-
 .btn {
-  width: 100px;
+    width: 100px;
 }
-
 .btn-wide {
-  width: 180px;
+    width: 180px;
 }
-
 .right {
-  float: right;
+    float: right;
 }
-
 .left {
-  float: left;
+    float: left;
 }
-
 // login
 .jumbotron-login {
-  background-color: $dark-gray;
-  color: $plain-white;
-  text-align: center;
+    background-color: $dark-gray;
+    color: $plain-white;
+    text-align: center;
 }
-
 // All quizzes
 .list-group {
-  .col-xs-7 {
-    font-size: 20px;
-    font-weight: bold;
-    text-align: left;
-  }
-  .col-xs-5 {
-    text-align: right;
-  }
+    .col-xs-7 {
+        font-size: 20px;
+        font-weight: bold;
+        text-align: left;
+    }
+    .col-xs-5 {
+        text-align: right;
+    }
 }
-
 .pagination {
-  margin: auto;
-  display: block;
+    margin: auto;
+    display: block;
 }
-
 .sort-wrap {
-  margin-bottom: 20px;
+    margin-bottom: 20px;
 }
-
 // _form
 .margin {
-  margin-bottom: 18px;
-  margin-top: 18px;
+    margin-bottom: 18px;
+    margin-top: 18px;
 }
-
 .sizing-addon-md {
-  font-size: 18px;
+    font-size: 18px;
 }
-
 .user-name {
-  display: block;
-  line-height: 20px;
-  padding: 15px;
+    display: block;
+    line-height: 20px;
+    padding: 15px;
 }
