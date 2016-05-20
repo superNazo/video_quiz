@@ -11,31 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160504230528) do
-
-  create_table "answers", force: :cascade do |t|
-    t.integer  "interview_id"
-    t.string   "video_token"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "question_id"
-  end
-
-  add_index "answers", ["interview_id"], name: "index_answers_on_interview_id"
-
-  create_table "interviews", force: :cascade do |t|
-    t.integer  "quiz_id"
-    t.integer  "user_id"
-    t.integer  "current_question_id"
-    t.string   "status"
-    t.datetime "created_at",          null: false
-    t.datetime "updated_at",          null: false
-  end
-
-  add_index "interviews", ["current_question_id"], name: "index_interviews_on_current_question_id"
-  add_index "interviews", ["quiz_id", "user_id"], name: "index_interviews_on_quiz_id_and_user_id", unique: true
-  add_index "interviews", ["quiz_id"], name: "index_interviews_on_quiz_id"
-  add_index "interviews", ["user_id"], name: "index_interviews_on_user_id"
+ActiveRecord::Schema.define(version: 20160420074807) do
 
   create_table "questions", force: :cascade do |t|
     t.text     "content"

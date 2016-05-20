@@ -1,10 +1,6 @@
 Rails.application.routes.draw do
   get "video_recorder", to: "video_recorder#index"
-
-  resources :quizzes do
-    resources :answers
-    resource :interview, only: [:new, :create, :show]
-  end
+  resources :quizzes
 
   devise_for :users, skip: [:password, :sessions],
                      controllers: { omniauth_callbacks: "users/omniauth_callbacks" }
