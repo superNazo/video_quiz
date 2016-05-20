@@ -4,9 +4,8 @@ ruby "2.3.0"
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
 gem 'bootstrap-sass', '~> 3.3.6'
-gem 'cocoon'
 gem 'coffee-rails',   '4.1.0'
-gem 'coveralls',      require: false
+gem 'coveralls', require: false
 gem 'devise'
 gem 'figaro'
 gem 'jbuilder',       '2.2.3'
@@ -19,6 +18,7 @@ gem 'turbolinks',     '2.3.0'
 gem 'uglifier',       '2.5.3'
 gem 'will_paginate', '~> 3.0.6'
 gem 'Ziggeo'
+gem 'cocoon'
 
 group :development, :test do
   gem 'byebug',      '3.4.0'

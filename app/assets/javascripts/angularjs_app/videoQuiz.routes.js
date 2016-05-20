@@ -27,7 +27,7 @@ videoQuizRoutes.config(['$routeProvider', '$locationProvider',
       templateUrl: 'angularjs_app/components/quizzes/views/finishQuiz.html'
     }).
     when('/', {
-      templateUrl: 'angularjs_app/components/home/views/index.html',
+      templateUrl: 'angularjs_app/components/views/index.html',
       controller: 'popUpCtrl'
     }).
     otherwise({

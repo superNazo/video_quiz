@@ -2,20 +2,27 @@ class QuizzesController < ApplicationController
   before_action :set_quiz, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
 
+  # GET /quizzes
   def index
     @quizzes = Quiz.all.paginate(page: params[:page], per_page: 10)
   end
 
+  # GET /quizzes/1
+  # GET /quizzes/1.json
   def show
   end
 
+  # GET /quizzes/new
   def new
     @quiz = Quiz.build_new
   end
 
+  # GET /quizzes/1/edit
   def edit
   end
 
+  # POST /quizzes
+  # POST /quizzes.json
   def create
     @quiz = Quiz.new(quiz_params)
 
@@ -30,6 +37,8 @@ class QuizzesController < ApplicationController
     end
   end
 
+  # PATCH/PUT /quizzes/1
+  # PATCH/PUT /quizzes/1.json
   def update
     respond_to do |format|
       if @quiz.update(quiz_params)
@@ -42,6 +51,8 @@ class QuizzesController < ApplicationController
     end
   end
 
+  # DELETE /quizzes/1
+  # DELETE /quizzes/1.json
   def destroy
     @quiz.destroy
     respond_to do |format|
@@ -52,10 +63,12 @@ class QuizzesController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
   def set_quiz
     @quiz = Quiz.find(params[:id])
   end
 
+  # Never trust parameters from the scary internet, only allow the white list through.
   def quiz_params
     params.require(:quiz).permit(:name, questions_attributes: [:id, :content, :record_time_limit, :_destroy])
   end

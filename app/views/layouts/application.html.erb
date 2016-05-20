@@ -11,7 +11,7 @@
       ZiggeoApi.token = "<%= Rails.application.secrets.ziggeo_api_token %>";
     </script>
     <%= csrf_meta_tags %>
-    <base href="/"/>
+    <base href="/" />
   </head>
   <body>
     <header class="navbar navbar-default navbar-fixed-top">
@@ -25,23 +25,21 @@
           </button>
         </div>
         <nav>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-left">
-              <% if user_signed_in? %>
-              <li><%= link_to "Home", quizzes_path %></li>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav navbar-left">
+            <% if user_signed_in? %>
+            <li><%= link_to "Home", quizzes_path %></li>
             <% else %>
-              <li><%= link_to "Home", "/" %></li>
-              <% end %>
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-              <% if user_signed_in? %>
-              <li>
-                <span class="user-name"><%= current_user.name %></span>
-              </li>
-              <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-              <% end %>
-            </ul>
-          </div>
+            <li><%= link_to "Home", "/" %></li>
+            <% end %>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <% if user_signed_in? %>
+            <li><span class="user-name"><%= current_user.name %></span></li>
+            <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+           <% end %>
+          </ul>
+        </div>
         </nav>
       </div>
     </header>
