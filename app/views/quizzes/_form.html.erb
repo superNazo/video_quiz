@@ -1,38 +1,37 @@
 <%= form_for(@quiz) do |f| %>
-<% if @quiz.errors.any? %>
-<div class="alert alert-danger" role="alert">
-  <div id="error_explanation">
-    <h2><%= pluralize(@quiz.errors.count, "error") %>
-      prohibited this quiz from being saved:</h2>
+  <% if @quiz.errors.any? %>
+  <div class="alert alert-danger" role="alert">
+    <div id="error_explanation">
+      <h2><%= pluralize(@quiz.errors.count, "error") %> prohibited this quiz from being saved:</h2>
 
-    <ul>
+      <ul>
       <% @quiz.errors.full_messages.each do |message| %>
-      <li><%= message %></li>
+        <li><%= message %></li>
       <% end %>
-    </ul>
-  </div>
-</div>
-<% end %>
-
-<div class="input-group">
-  <%= f.label :name, class: "input-group-addon sizing-addon-md" %>
-  <%= f.text_field :name, class: "form-control" %>
-</div>
-
-<h2>Now add some Questions</h2>
-
-<div class="field">
-  <ol id="questions">
-    <div class="input-group margin">
-      <%= f.fields_for :questions do |questions| %>
-      <%= render 'question_fields', f: questions %>
-      <% end %>
-      <li id="add_question"><%= link_to_add_association 'add question', f, :questions %></li>
+      </ul>
     </div>
-  </ol>
-</div>
+  </div>
+  <% end %>
 
-<div class="actions">
-  <%= f.submit class: "link-to btn btn-success right"%>
-</div>
+  <div class="input-group">
+      <%= f.label :name, class: "input-group-addon sizing-addon-md" %>
+      <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <h2>Now add some Questions</h2>
+
+  <div class="field">
+    <ol id="questions">
+      <div class="input-group margin">
+        <%= f.fields_for :questions do |questions| %>
+          <%= render 'question_fields', f: questions %>
+        <% end %>
+        <li id="add_question"><%= link_to_add_association 'add question', f, :questions %></li>
+      </div>
+    </ol>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "link-to btn btn-success right"%>
+  </div>
 <% end %>

@@ -6,17 +6,14 @@
 <p ng-if="checkAbsence()" class="alert alert-danger">
   Add some questions.
 </p>
-<div class="form-group" ng-repeat="question in quiz.questions_attributes"
-     ng-hide="question._destroy">
+<div class="form-group" ng-repeat="question in quiz.questions_attributes" ng-hide="question._destroy">
   <label> {{$index+1}} Content
     <br>
-    <textarea type="text" ng-model="question.content" required maxlength="1023">
-    </textarea>
+    <textarea type="text" ng-model="question.content" required maxlength="1023"></textarea>
   </label>
   <label>Record time limit
     <br>
-    <input type="text" ng-model="question.record_time_limit" required
-           pattern="[0-9]+" title="You can enter only numbers">
+    <input type="text" ng-model="question.record_time_limit" required pattern="[0-9]+" title="You can enter only numbers">
   </label>
   <a href="" ng-click="removeQuestion(question)">Remove question</a>
 </div>
@@ -24,7 +21,10 @@
   <p class="list-group-item list-group-item-warning" ng-if="restrictAdding()">
     You have reached the questions limit.
   </p>
-  <button class="btn btn-info btn-wide" ng-disabled="restrictAdding()"
-          ng-click="addQuestion()">Add question {{countQuestions()}}/{{limit}}
+  <button
+    class="btn btn-info btn-wide"
+    ng-disabled="restrictAdding()"
+    ng-click="addQuestion()"
+    >Add question {{countQuestions()}}/{{limit}}
   </button>
 </div>
