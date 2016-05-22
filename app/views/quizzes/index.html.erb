@@ -5,22 +5,22 @@
 <h1>Quizzes list</h1>
 
 <% @quizzes.each do |quiz| %>
-  <ul class="list-group">
-    <li class="list-group-item">
-      <div class="row">
-        <div class="col-xs-7">
-          <span>
-            <%= quiz.name %>
-          </span>
-        </div>
-        <div class="col-xs-5">
-          <%= link_to 'Show', quiz, class: "link-to btn btn-success" %>
-          <%= link_to 'Edit', edit_quiz_path(quiz), class: "link-to btn btn-info" %>
-          <%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }, class: "link-to btn btn-danger" %>
-        </div>
+<ul class="list-group">
+  <li class="list-group-item">
+    <div class="row">
+      <div class="col-xs-7">
+        <span>
+          <%= quiz.name %>
+        </span>
       </div>
-    </li>
-  </ul>
- <% end %>
- <span class="pagination right"><%= will_paginate @quizzes , inner_window: 1, outer_window: 0 %></span>
- <%= link_to 'New Quiz', new_quiz_path, class: "link-to btn btn-success left" %>
+      <div class="col-xs-5">
+        <%= link_to 'Show', quiz, class: "link-to btn btn-success" %>
+        <%= link_to 'Edit', edit_quiz_path(quiz), class: "link-to btn btn-info" %>
+        <%= link_to 'Destroy', quiz, method: :delete, data: { confirm: 'Are you sure?' }, class: "link-to btn btn-danger" %>
+      </div>
+    </div>
+  </li>
+</ul>
+<% end %>
+<span class="pagination right"><%= will_paginate @quizzes , inner_window: 1, outer_window: 0 %></span>
+<%= link_to 'New Quiz', new_quiz_path, class: "link-to btn btn-success left" %>
