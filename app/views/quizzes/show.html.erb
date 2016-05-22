@@ -8,14 +8,17 @@
 </h2>
 
 <% if @quiz.questions.any? %>
-  <h4>Listing questions: </h4>
-    <% @quiz.questions.each do |question| %>
-    <ul class="list-group">
-      <li class="list-group-item">
-        <%= question.content %> (record time limit: <b><%= question.record_time_limit %></b> sec.)
-      </li>
-    </ul>
-    <% end %>
+<h4>Listing questions:</h4>
+<% @quiz.questions.each do |question| %>
+<ul class="list-group">
+  <li class="list-group-item">
+    <%= question.content %>
+    (record time limit:
+    <b><%= question.record_time_limit %></b>
+    sec.)
+  </li>
+</ul>
+<% end %>
 <% else %>
 <div class="alert alert-danger" role="alert">
   <p>There is no any questions in this quiz yet</p>
