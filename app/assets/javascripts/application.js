@@ -22,4 +22,8 @@
 //= require angular-animate
 //= require ui-bootstrap-tpls-1.3.2.min
 //= require cocoon
+//= require react
+//= require react_ujs
+//= require fluxxor
+//= require components
 //= require_tree .
