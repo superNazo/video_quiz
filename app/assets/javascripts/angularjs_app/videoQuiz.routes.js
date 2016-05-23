@@ -26,9 +26,6 @@ videoQuizRoutes.config(['$routeProvider', '$locationProvider',
     when('/quizzes/:quizId/finish', {
       templateUrl: 'angularjs_app/components/quizzes/views/finishQuiz.html'
     }).
-    when('/video_recorder', {
-      templateUrl: 'angularjs_app/shared/video_recorder/testingPage.html',
-    }).
     when('/', {
       templateUrl: 'angularjs_app/components/home/views/index.html',
       controller: 'popUpCtrl'

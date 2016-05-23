@@ -33,19 +33,12 @@
               <li><%= link_to "Home", "/" %></li>
               <% end %>
             </ul>
-            <ul class="nav navbar-nav navbar-left">
-              <li>
-                <a href="/video_recorder">Video recorder</a>
-              </li>
-            </ul>
             <ul class="nav navbar-nav navbar-right">
               <% if user_signed_in? %>
-                <li>
-                  <span class="user-name"><%= current_user.name %></span>
-                </li>
-                <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-              <% else %>
-                <li><%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %></li>
+              <li>
+                <span class="user-name"><%= current_user.name %></span>
+              </li>
+              <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
               <% end %>
             </ul>
           </div>

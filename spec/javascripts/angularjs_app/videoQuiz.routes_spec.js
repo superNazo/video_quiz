@@ -97,24 +97,6 @@ describe('videoQuizRoutes', function() {
     });
   });
 
-  describe('/quizzes/:quizId show route', function() {
-    it('should be defined', function() {
-      var showquizRoute = route.routes['/quizzes/:quizId'];
-      expect(showquizRoute).toBeDefined();
-    });
-
-    it('should have right template', function() {
-      var showquizRoute = route.routes['/quizzes/:quizId'];
-      expect(showquizRoute.templateUrl)
-        .toEqual('angularjs_app/components/quizzes/views/showQuiz.html');
-    });
-
-    it('should have right controller', function() {
-      var showquizRoute = route.routes['/quizzes/:quizId'];
-      expect(showquizRoute.controller).toEqual('showQuizCtrl');
-    });
-  });
-
   describe('/quizzes index route', function() {
     it('should be defined', function() {
       var quizzesRoute = route.routes['/quizzes'];
@@ -133,17 +115,21 @@ describe('videoQuizRoutes', function() {
     });
   });
 
-  describe('/video_recorder route', function() {
+  describe('/quizzes/:quizId show route', function() {
     it('should be defined', function() {
-      var quizzesRoute = route.routes['/video_recorder'];
-      expect(quizzesRoute).toBeDefined();
+      var showquizRoute = route.routes['/quizzes/:quizId'];
+      expect(showquizRoute).toBeDefined();
     });
 
     it('should have right template', function() {
-      var quizzesRoute = route.routes['/video_recorder'];
-      expect(quizzesRoute.templateUrl)
-        .toEqual('angularjs_app/shared/video_recorder/testingPage.html');
+      var showquizRoute = route.routes['/quizzes/:quizId'];
+      expect(showquizRoute.templateUrl)
+        .toEqual('angularjs_app/components/quizzes/views/showQuiz.html');
+    });
+
+    it('should have right controller', function() {
+      var showquizRoute = route.routes['/quizzes/:quizId'];
+      expect(showquizRoute.controller).toEqual('showQuizCtrl');
     });
   });
-
 });

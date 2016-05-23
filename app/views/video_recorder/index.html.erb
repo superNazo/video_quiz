@@ -1,35 +1,70 @@
 <div class="row">
   <ul class="list-group">
-    <div class="col-xs-6">
-      <li class="list-group-item">
-        <h2>Question #1</h2>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua.
-        </p>
+      <div class="col-xs-8">
+        <li class="list-group-item">
+          <h2>Question #1</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            Lorem ipsum dolor sit amet,
+            consectetur adipiscing elit,
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </p>
       </div>
-      <div class="col-xs-6">
-        <div id="video-recorder"></div>
-        <script>renderVideoRecorder("video-recorder", 5, 7, false, 320, 240)</script>
+      <div class="col-xs-4">
+        <button type="button" class="btn btn-success btn-wide" data-toggle="modal" data-target="#videoRecorderModal">
+          Record Video
+        </button>
       </div>
     </li>
   </ul>
 </div>
 
 <div class="container-fluid">
-  <div class="row">
-    <div class="col-xs-8">
-      <% @all_videos.each_slice(3) do |row_chunk| %>
+<div class="row">
+  <div class="col-xs-8">
+    <% @all_videos.each_slice(3) do |row_chunk| %>
       <% row_chunk.each do |video_token| %>
       <div class="col-xs-4">
-        <ziggeo ziggeo-video="<%= video_token %>" ziggeo-width=240
-                ziggeo-height=240></ziggeo>
+        <ziggeo ziggeo-video="<%= video_token %>" ziggeo-width=240 ziggeo-height=240></ziggeo>
       </div><!-- col-xs-4 -->
       <% end %>
-    </br>
-    <% end %>
-  </div><!-- col-xs-8 col-xs-offset-2 -->
+  </br>
+  <% end %>
+</div><!-- col-xs-8 col-xs-offset-2 -->
 </div><!-- row -->
 </div><!-- container-fluid -->
+
+<div class="modal fade" id="videoRecorderModal" tabindex="-1" role="dialog" aria-labelledby="videoRecorderModalLabel">
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+    <h4 class="modal-title" id="videoRecorderModalLabel">Video recorder</h4>
+  </div><!-- modal-header -->
+  <div class="modal-body">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <div id='video-status' class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <div class="wall-of-videos-container">
+          <ziggeo ziggeo-limit=15 ziggeo-width=320 ziggeo-height=240></ziggeo>
+        </div>
+      </div>
+    </div>
+  </div><!-- modal-body -->
+  <div class="modal-footer">
+    <button type="button" id="reload-page" class="btn btn-primary" data-dismiss="modal">Close</button>
+  </div><!-- modal-footer -->
+</div><!-- modal-content -->
+</div><!-- modal-dialog -->
+</div><!-- modal fade -->
