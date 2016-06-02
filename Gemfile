@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-ruby "2.3.0"
+ruby '2.3.0'
 
 gem 'angularjs-rails'
 gem 'angular-rails-templates'
@@ -9,10 +9,12 @@ gem 'coffee-rails',   '4.1.0'
 gem 'coveralls',      require: false
 gem 'devise'
 gem 'figaro'
+gem 'fluxxor-rails'
 gem 'jbuilder',       '2.2.3'
 gem 'jquery-rails',   '4.0.3'
 gem 'omniauth-facebook'
 gem 'rails',          '4.2.2'
+gem 'react-rails',    '~> 1.7.0'
 gem 'sass-rails',     '>= 3.2'
 gem 'sdoc',           '0.4.0', group: :doc
 gem 'turbolinks',     '2.3.0'
